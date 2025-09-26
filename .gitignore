@@ -1,0 +1,31 @@
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.temp
+
+# Dossier de travail (scripts CTF déplacés)
+DEPLACABLE/
+
+# Fichiers IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Fichiers de sauvegarde
+*~
+*.backup

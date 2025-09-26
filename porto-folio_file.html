@@ -1,0 +1,1864 @@
+<!-- Déclaration du type de document HTML5 -->
+<!DOCTYPE html>
+<!-- Élément racine HTML avec attribut lang pour spécifier la langue française -->
+<html lang="fr">
+
+<!-- Section HEAD : Contient les métadonnées et ressources externes -->
+<head>
+    <!-- Encodage des caractères en UTF-8 pour support des caractères spéciaux français -->
+    <meta charset="UTF-8">
+    
+    <!-- Configuration pour un affichage responsive sur mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titre de la page qui apparaît dans l'onglet du navigateur -->
+    <title>TRAORE OUSMANE</title>
+    
+    <!-- Chargement du framework CSS TailwindCSS depuis CDN pour le styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chargement des icônes Font Awesome pour les pictogrammes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Configuration personnalisée de TailwindCSS -->
+    <script>
+        // Configuration du thème TailwindCSS
+        tailwind.config = {
+            // Activation du mode sombre basé sur la classe 'dark'
+            darkMode: 'class',
+            
+            // Extension du thème par défaut
+            theme: {
+                extend: {
+                    // Définition des couleurs personnalisées du site
+                    colors: {
+                        primary: '#5D5CDE',      // Couleur principale violette
+                        secondary: '#6366F1',    // Couleur secondaire indigo
+                        
+                        // Palette pour le mode sombre
+                        dark: {
+                            bg: '#181818',        // Arrière-plan sombre
+                            card: '#252525',      // Cartes en mode sombre
+                        },
+                        
+                        // Palette pour le mode clair
+                        light: {
+                            bg: '#FFFFFF',        // Arrière-plan clair
+                            card: '#F9FAFB',      // Cartes en mode clair
+                        }
+                    },
+                    
+                    // Animations personnalisées
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',  // Animation d'apparition
+                    },
+                    
+                    // Définition des keyframes pour les animations
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },     // Début invisible
+                            '100%': { opacity: '1' },   // Fin visible
+                        }
+                    }
+                }
+            }
+        }
+
+        // Détection automatique de la préférence de mode sombre du système
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // Si le système préfère le mode sombre, ajouter la classe 'dark'
+            document.documentElement.classList.add('dark');
+        }
+        
+        // Écouter les changements de préférence du système
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                // Mode sombre activé
+                document.documentElement.classList.add('dark');
+            } else {
+                // Mode clair activé
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</head>
+<!-- DÉBUT DU CORPS DE LA PAGE -->
+<!-- Classes : arrière-plan adaptatif (clair/sombre), texte adaptatif, transition fluide -->
+<body class="bg-light-bg dark:bg-dark-bg text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- ========== BARRE DE NAVIGATION ========== -->
+    <!-- Navigation collante qui reste en haut lors du défilement -->
+    <!-- Classes : position fixe, arrière-plan semi-transparent avec effet blur -->
+    <nav class="sticky top-0 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-lg shadow-sm z-50">
+        
+        <!-- Conteneur centré avec padding et flexbox pour alignement -->
+        <div class="container px-4 mx-auto flex items-center justify-between py-4">
+            
+            <!-- Logo/Titre du portfolio -->
+            <!-- Classes : grande taille, police en gras, couleur primaire -->
+            <a href="#accueil" class="group relative inline-flex items-center gap-2">
+                <span class="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-primary via-indigo-500 to-fuchsia-500 bg-clip-text text-transparent">
+                    OUSMANE TRAORE
+                </span>
+                <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                <span class="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-primary to-fuchsia-500 transition-all duration-500 group-hover:w-full"></span>
+            </a>
+            
+            <!-- Bouton du menu mobile (visible uniquement sur petits écrans) -->
+            <!-- Classes : caché sur desktop (md:hidden), focus outline pour accessibilité -->
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-gray-700 dark:text-gray-200 text-2xl"></i>
+            </button>
+            
+            <!-- Menu de navigation -->
+            <!-- Classes : caché par défaut sur mobile, visible sur desktop -->
+            <!-- Position absolue sur mobile, statique sur desktop -->
+            <div id="menu" class="hidden absolute top-16 left-0 right-0 bg-white dark:bg-dark-bg md:static md:bg-transparent md:dark:bg-transparent md:flex md:items-center shadow-lg md:shadow-none">
+                <ul class="flex flex-col md:flex-row gap-4 md:gap-8 p-4 md:p-0 list-none">
+                    <li>
+                        <a href="#accueil" aria-current="page" class="block px-4 py-2 rounded-lg font-semibold text-primary hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-300">
+                            Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projets" class="block px-4 py-2 rounded-lg hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-300">
+                            Mes Projets
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#competences" class="block px-4 py-2 rounded-lg hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-300">
+                            Mes Compétences
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#a-propos" class="block px-4 py-2 rounded-lg hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-300">
+                            À propos de moi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="block px-4 py-2 rounded-lg hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-300">
+                            Me Contacter
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== SECTION HERO CYBERSÉCURITÉ ========== -->
+    <!-- Section principale avec présentation spécialisée cybersécurité -->
+    <section id="accueil" class="relative py-20 md:py-32 px-4 overflow-hidden">
+        
+        <!-- Background animé avec effet matrix/cyber -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 opacity-5"></div>
+        <div class="absolute inset-0" id="cyber-bg">
+            <!-- Canvas pour animation de particules sera ajouté par JS -->
+        </div>
+        
+        <!-- Conteneur centré pour le contenu -->
+        <div class="container mx-auto text-center relative z-10">
+            
+            <!-- Badge de spécialisation -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full mb-6">
+                <i class="fas fa-shield-alt text-red-400"></i>
+                <span class="text-sm font-medium text-red-400">Cybersecurity Specialist</span>
+            </div>
+            
+            <!-- Titre principal avec effet cyberpunk -->
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                <span class="block mb-2 text-gray-700 dark:text-gray-300">Salut, je suis</span>
+                <span class="bg-gradient-to-r from-red-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent animate-pulse">
+                    OUSMANE TRAORE
+                </span>
+            </h1>
+            
+            <!-- Titre professionnel avec effet typewriter -->
+            <div class="text-2xl md:text-4xl font-semibold mb-8 h-16 flex items-center justify-center">
+                <span id="typewriter" class="text-red-400 border-r-2 border-red-400 pr-2"></span>
+            </div>
+            
+            <!-- Description professionnelle -->
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed">
+                🛡️ <strong>Spécialiste en Cybersécurité</strong> passionné par la protection des systèmes d'information. 
+                Actuellement en certification <strong>C|CT (EC-Council)</strong>, j'excelle dans le <strong>pentesting</strong>, 
+                l'<strong>analyse forensic</strong> et l'<strong>administration sécurisée</strong>. Expert en outils comme 
+                <strong>Metasploit</strong>, <strong>Wireshark</strong> et environnements <strong>Linux</strong>.
+            </p>
+            
+            <!-- Statistiques impressionnantes -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-3xl mx-auto">
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-red-400 mb-1">4+</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Années d'étude</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-purple-400 mb-1">15+</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Formations complétées</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-cyan-400 mb-1">C|CT</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">En cours EC-Council</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl md:text-3xl font-bold text-green-400 mb-1">24/7</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Veille sécurité</div>
+                </div>
+            </div>
+            
+            <!-- Boutons d'action cybersécurité -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                
+                <!-- Bouton principal : Voir mes projets -->
+                <a href="#projets" class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-purple-600 text-white font-semibold rounded-lg hover:from-red-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-red-500/25 transform hover:-translate-y-1">
+                    <i class="fas fa-code-branch mr-2"></i>
+                    Projets Cybersécurité
+                    <div class="absolute inset-0 bg-white/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </a>
+                
+                <!-- Bouton secondaire : Me contacter -->
+                <a href="#contact" class="group relative px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-lg hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    Collaboration sécurisée
+                    <div class="absolute inset-0 bg-cyan-400/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </a>
+            </div>
+            
+            <!-- Indicateurs de scroll -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION PROJETS RÉELS ========== -->
+    <section id="projets" class="py-20 px-4 bg-gray-50 dark:bg-dark-card relative overflow-hidden">
+        
+        <!-- Pattern de fond cybersécurité -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0 bg-gradient-to-br from-red-500 via-purple-500 to-cyan-500"></div>
+        </div>
+        
+        <div class="container mx-auto relative z-10">
+            
+            <!-- Header de section -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-purple-600 rounded-full mb-6">
+                    <i class="fas fa-rocket text-2xl text-white"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Réalisations</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Projets concrets en cybersécurité, audit réseau et développement sécurisé. 
+                    De l'automatisation d'audit pour Moov Africa aux CTF internationaux.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                
+                <!-- ===== PROJET PRINCIPAL : MOOV AFRICA ===== -->
+                <div class="group bg-white dark:bg-dark-bg rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-gradient-to-b from-red-500 to-purple-600 lg:col-span-2">
+                    
+                    <!-- Header du projet -->
+                    <div class="bg-gradient-to-r from-red-500 to-purple-600 p-6 text-white">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-network-wired text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Projet Moov Africa</h3>
+                                <p class="text-red-100">Stage - Automatisation d'Audit Réseau</p>
+                            </div>
+                            <div class="ml-auto">
+                                <div class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">
+                                    EN COURS
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-lg font-medium">
+                            "Automatisation de l'audit de configuration des équipements réseau et système avec alertes de conformité"
+                        </p>
+                    </div>
+                    
+                    <div class="p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            
+                            <!-- Réalisations -->
+                            <div>
+                                <h4 class="font-bold text-lg mb-4 text-red-600 dark:text-red-400">
+                                    <i class="fas fa-check-circle mr-2"></i>Réalisé
+                                </h4>
+                                <div class="space-y-3">
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-file-alt text-green-500 mt-1"></i>
+                                        <span>Protocole de recherche validé</span>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-sitemap text-green-500 mt-1"></i>
+                                        <span>Architecture UML complète (cas d'usage, composants, séquence)</span>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-network-wired text-green-500 mt-1"></i>
+                                        <span>Lab GNS3 avec topologie réaliste</span>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-cog text-green-500 mt-1"></i>
+                                        <span>Configurations brutes (4 routeurs, 3 switches, serveurs Linux/Windows)</span>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <i class="fas fa-robot text-green-500 mt-1"></i>
+                                        <span>Plan d'automatisation (Netmiko, TextFSM, PowerShell)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Technologies & Stack -->
+                            <div>
+                                <h4 class="font-bold text-lg mb-4 text-purple-600 dark:text-purple-400">
+                                    <i class="fas fa-code mr-2"></i>Stack Technique
+                                </h4>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-700">
+                                        <div class="font-semibold text-blue-700 dark:text-blue-300">Backend</div>
+                                        <div class="text-sm text-blue-600 dark:text-blue-400">Django + Python</div>
+                                    </div>
+                                    <div class="bg-cyan-50 dark:bg-cyan-900/20 p-3 rounded-lg border border-cyan-200 dark:border-cyan-700">
+                                        <div class="font-semibold text-cyan-700 dark:text-cyan-300">Frontend</div>
+                                        <div class="text-sm text-cyan-600 dark:text-cyan-400">Flutter</div>
+                                    </div>
+                                    <div class="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-700">
+                                        <div class="font-semibold text-green-700 dark:text-green-300">Automation</div>
+                                        <div class="text-sm text-green-600 dark:text-green-400">Netmiko + TextFSM</div>
+                                    </div>
+                                    <div class="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-700">
+                                        <div class="font-semibold text-purple-700 dark:text-purple-300">Database</div>
+                                        <div class="text-sm text-purple-600 dark:text-purple-400">PostgreSQL</div>
+                                    </div>
+                                </div>
+                                
+                                <h4 class="font-bold text-lg mb-3 mt-6 text-orange-600 dark:text-orange-400">
+                                    <i class="fas fa-wrench mr-2"></i>Outils
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">GNS3</span>
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">PowerShell</span>
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Bash</span>
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">CIS Benchmarks</span>
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">YAML</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Challenges & Prochaines étapes -->
+                        <div class="mt-8 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg border border-yellow-200 dark:border-yellow-700">
+                            <h4 class="font-bold text-lg mb-3 text-yellow-700 dark:text-yellow-300">
+                                <i class="fas fa-tasks mr-2"></i>Défis en cours
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                                <div>• Parser multi-vendor (Cisco IOS, JunOS, MikroTik)</div>
+                                <div>• Secret management sécurisé</div>
+                                <div>• Scalabilité & orchestration</div>
+                                <div>• Intégration SIEM & alerting</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Autres projets -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- ===== CTF HACKERVERSE ===== -->
+                <div class="group bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-red-200 dark:border-red-800">
+                    
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-red-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-flag text-5xl text-white opacity-80"></i>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-red-600/80 px-3 py-1 rounded-full text-white text-sm font-semibold">
+                                INTERNATIONAL
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-trophy text-yellow-500"></i>
+                            <h3 class="font-bold text-xl">CTF Hackerverse</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Participation active aux compétitions CTF internationales. 
+                            Renforcement des compétences en exploitation, forensics et reverse engineering.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs rounded">Web Exploitation</span>
+                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded">Forensics</span>
+                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded">Reverse</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fas fa-clock mr-1"></i>En cours
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <a href="https://ctf.hackerverse.com/guidelines" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-semibold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Plateforme</span>
+                                </a>
+                                <a href="TB_HACKERVERSE.png" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs font-semibold rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>Mon Tableau de Bord</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== LABORATOIRE GNS3 ===== -->
+                <div class="group bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-cyan-200 dark:border-cyan-800">
+                    
+                    <div class="h-48 bg-gradient-to-br from-cyan-500 to-cyan-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-network-wired text-5xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-server text-cyan-500"></i>
+                            <h3 class="font-bold text-xl">Lab GNS3 Avancé</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Création d'environnements réseau complexes pour tests d'audit et simulation d'attaques. 
+                            Topologies multi-vendor avec routeurs, switches et serveurs.
+                        </p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Routeurs Cisco (Core, Edge, Branch)</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Switches multi-couches</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Serveurs Linux & Windows</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== ARCHITECTURE & UML ===== -->
+                <div class="group bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-purple-200 dark:border-purple-800">
+                    
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-project-diagram text-5xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-drafting-compass text-purple-500"></i>
+                            <h3 class="font-bold text-xl">Architecture Logicielle</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Conception d'architectures complètes avec diagrammes UML professionnels. 
+                            Modélisation de systèmes complexes d'audit et de monitoring.
+                        </p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-sitemap text-purple-500"></i>
+                                <span>Diagrammes de composants</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-exchange-alt text-purple-500"></i>
+                                <span>Diagrammes de séquence</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-users text-purple-500"></i>
+                                <span>Cas d'usage détaillés</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== AUTOMATISATION SCRIPTS ===== -->
+                <div class="group bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-green-200 dark:border-green-800">
+                    
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-green-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-robot text-5xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-cogs text-green-500"></i>
+                            <h3 class="font-bold text-xl">Scripts d'Automatisation</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Développement de scripts Python pour l'extraction et l'analyse automatisée 
+                            de configurations réseau multi-vendor.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded">Python</span>
+                            <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs rounded">Netmiko</span>
+                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded">TextFSM</span>
+                            <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded">PowerShell</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== CONFIGURATIONS RÉALISTES ===== -->
+                <div class="group bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-orange-200 dark:border-orange-800">
+                    
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-orange-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-file-code text-5xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-database text-orange-500"></i>
+                            <h3 class="font-bold text-xl">Jeux de Données Réalistes</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Création de configurations authentiques pour tests d'audit : 
+                            routeurs Cisco, switches, serveurs Linux/Windows avec vulnérabilités typiques.
+                        </p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-router text-orange-500"></i>
+                                <span>4 routeurs (Core/Edge/Branch)</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-server text-orange-500"></i>
+                                <span>Serveurs avec configs SSH, Apache, IIS</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-shield-alt text-orange-500"></i>
+                                <span>Vulnérabilités CIS détectables</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== COMPLIANCE & CIS ===== -->
+                <div class="group bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-indigo-200 dark:border-indigo-800">
+                    
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-indigo-700 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-clipboard-check text-5xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <i class="fas fa-certificate text-indigo-500"></i>
+                            <h3 class="font-bold text-xl">Compliance & Standards</h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                            Expertise approfondie en référentiels de sécurité internationaux, normes ISO, 
+                            frameworks NIST et réglementations RGPD. Implémentation pratique et automatisation des contrôles.
+                        </p>
+                        
+                        <!-- Normes ISO & Standards -->
+                        <div class="space-y-4 mb-6">
+                            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4 rounded-lg border border-indigo-200 dark:border-indigo-700">
+                                <h4 class="font-semibold text-indigo-700 dark:text-indigo-300 mb-2 flex items-center">
+                                    <i class="fas fa-scroll mr-2"></i>📜 Normes ISO & Standards de Sécurité
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                                    <div class="space-y-1">
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 27001</strong> - SMSI</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 27002</strong> - Code bonnes pratiques</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 27005</strong> - Gestion des risques</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 27017</strong> - Sécurité cloud</div>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 27018</strong> - Protection données cloud</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 27701</strong> - RGPD-friendly</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 22301</strong> - Continuité d'activité</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ISO/IEC 15408</strong> - Critères Communs</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-4 rounded-lg border border-blue-200 dark:border-blue-700">
+                                <h4 class="font-semibold text-blue-700 dark:text-blue-300 mb-2 flex items-center">
+                                    <i class="fas fa-shield-alt mr-2"></i>🔐 NIST & Référentiels Sécurité
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                                    <div class="space-y-1">
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>NIST Cybersecurity Framework</strong></div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>NIST SP 800-30</strong> - Gestion risques</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>NIST SP 800-53</strong> - Contrôles sécurité</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>NIST SP 800-63</strong> - Auth MFA/OTP</div>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>CIS Controls</strong> - 20+ pratiques</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>COBIT</strong> - Gouvernance IT</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>ITIL</strong> - Gestion services IT</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>MITRE ATT&CK</strong> - Framework attaques</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-lg border border-green-200 dark:border-green-700">
+                                <h4 class="font-semibold text-green-700 dark:text-green-300 mb-2 flex items-center">
+                                    <i class="fas fa-gavel mr-2"></i>⚖️ Lois & Réglementations
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                                    <div class="space-y-1">
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>RGPD</strong> - Protection données EU</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>LOPSSI/LPM</strong> - Cybersécurité FR</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>HIPAA</strong> - Données médicales US</div>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>SOX</strong> - Audit financier</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>PCI DSS</strong> - Cartes bancaires</div>
+                                        <div class="text-gray-700 dark:text-gray-200">• <strong>OWASP Top 10</strong> - Vulnérabilités web</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tags techniques existants -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs rounded">CIS Benchmarks</span>
+                            <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded">YAML Rules</span>
+                            <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded">JSON Reports</span>
+                            <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded">ISO 27001</span>
+                            <span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs rounded">RGPD Compliance</span>
+                            <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded">NIST Framework</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to action -->
+            <div class="text-center mt-16">
+                <div class="inline-flex flex-col md:flex-row items-center gap-6 p-8 bg-gradient-to-r from-red-500 to-purple-600 rounded-xl text-white shadow-xl">
+                    <div class="text-center md:text-left">
+                        <div class="text-2xl font-bold mb-2">🚀 Objectif Stage</div>
+                        <div class="text-red-100">Finaliser le prototype Moov Africa et l'industrialiser avec des experts</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#contact" class="px-6 py-3 bg-white text-purple-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold">
+                            Discuter du projet
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION COMPÉTENCES CYBERSÉCURITÉ ========== -->
+    <section id="competences" class="py-20 px-4 relative overflow-hidden">
+        
+        <!-- Background pattern cybersécurité -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0 bg-gradient-to-br from-red-500 via-purple-500 to-cyan-500"></div>
+        </div>
+        
+        <div class="container mx-auto relative z-10">
+            
+            <!-- Header section -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-red-600 rounded-full mb-6">
+                    <i class="fas fa-tools text-2xl text-white"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Arsenal Cybersécurité</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Maîtrise complète des outils et technologies de pointe pour la sécurité informatique, 
+                    du pentesting à l'administration sécurisée des systèmes.
+                </p>
+            </div>
+            
+            <!-- Grid des compétences spécialisées -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- ===== CATÉGORIE 1 : OUTILS DE PENTESTING ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-red-500">
+                    
+                    <!-- Icône avec animation -->
+                    <div class="text-red-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6 text-red-600 dark:text-red-400">Pentesting & Exploitation</h3>
+                    
+                    <!-- Compétences avec barres de progression avancées -->
+                    <div class="space-y-4">
+                        
+                        <!-- Metasploit -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-crosshairs text-red-500 text-sm"></i>
+                                    Metasploit
+                                </span>
+                                <span class="text-sm font-semibold text-red-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-red-400 to-red-600 h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Nmap -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-search text-red-500 text-sm"></i>
+                                    Nmap
+                                </span>
+                                <span class="text-sm font-semibold text-red-500">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-red-400 to-red-600 h-full rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Kali Linux -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fab fa-linux text-red-500 text-sm"></i>
+                                    Kali Linux
+                                </span>
+                                <span class="text-sm font-semibold text-red-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-red-400 to-red-600 h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== CATÉGORIE 2 : ANALYSE & MONITORING ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-purple-500">
+                    
+                    <div class="text-purple-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6 text-purple-600 dark:text-purple-400">Analyse & Monitoring</h3>
+                    
+                    <div class="space-y-4">
+                        
+                        <!-- Wireshark -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-network-wired text-purple-500 text-sm"></i>
+                                    Wireshark
+                                </span>
+                                <span class="text-sm font-semibold text-purple-500">95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-purple-400 to-purple-600 h-full rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- OSINT -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-eye text-purple-500 text-sm"></i>
+                                    OSINT
+                                </span>
+                                <span class="text-sm font-semibold text-purple-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-purple-400 to-purple-600 h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Forensics -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-fingerprint text-purple-500 text-sm"></i>
+                                    Digital Forensics
+                                </span>
+                                <span class="text-sm font-semibold text-purple-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-purple-400 to-purple-600 h-full rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== CATÉGORIE 3 : ADMINISTRATION SÉCURISÉE ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-cyan-500">
+                    
+                    <div class="text-cyan-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6 text-cyan-600 dark:text-cyan-400">Administration Sécurisée</h3>
+                    
+                    <div class="space-y-4">
+                        
+                        <!-- Linux Admin -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fab fa-linux text-cyan-500 text-sm"></i>
+                                    Linux Admin
+                                </span>
+                                <span class="text-sm font-semibold text-cyan-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-cyan-400 to-cyan-600 h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Windows Server -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fab fa-windows text-cyan-500 text-sm"></i>
+                                    Windows Server
+                                </span>
+                                <span class="text-sm font-semibold text-cyan-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-cyan-400 to-cyan-600 h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Cloud Security -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-cloud text-cyan-500 text-sm"></i>
+                                    Cloud Security
+                                </span>
+                                <span class="text-sm font-semibold text-cyan-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-cyan-400 to-cyan-600 h-full rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== CATÉGORIE 4 : DÉVELOPPEMENT SÉCURISÉ ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-green-500">
+                    
+                    <div class="text-green-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6 text-green-600 dark:text-green-400">Développement & Scripting</h3>
+                    
+                    <div class="space-y-4">
+                        
+                        <!-- Python -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fab fa-python text-green-500 text-sm"></i>
+                                    Python
+                                </span>
+                                <span class="text-sm font-semibold text-green-500">90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-green-400 to-green-600 h-full rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Django -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-layer-group text-green-500 text-sm"></i>
+                                    Django
+                                </span>
+                                <span class="text-sm font-semibold text-green-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-green-400 to-green-600 h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bash -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-terminal text-green-500 text-sm"></i>
+                                    Bash Scripting
+                                </span>
+                                <span class="text-sm font-semibold text-green-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-green-400 to-green-600 h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== CATÉGORIE 5 : BASES DE DONNÉES ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-yellow-500">
+                    
+                    <div class="text-yellow-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6 text-yellow-600 dark:text-yellow-400">Bases de Données</h3>
+                    
+                    <div class="space-y-4">
+                        
+                        <!-- PostgreSQL -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-elephant text-yellow-500 text-sm"></i>
+                                    PostgreSQL
+                                </span>
+                                <span class="text-sm font-semibold text-yellow-500">85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- MySQL -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-database text-yellow-500 text-sm"></i>
+                                    MySQL
+                                </span>
+                                <span class="text-sm font-semibold text-yellow-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 h-full rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- SQL Security -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-shield-alt text-yellow-500 text-sm"></i>
+                                    SQL Security
+                                </span>
+                                <span class="text-sm font-semibold text-yellow-500">80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 h-full rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== CATÉGORIE 6 : CERTIFICATIONS ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-indigo-500">
+                    
+                    <div class="text-indigo-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">Certifications</h3>
+                    
+                    <div class="space-y-3">
+                        
+                        <!-- C|CT EC-Council -->
+                        <div class="p-3 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg border border-indigo-200 dark:border-indigo-700">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-award text-indigo-500"></i>
+                                    <div>
+                                        <div class="font-semibold text-indigo-700 dark:text-indigo-300">C|CT EC-Council</div>
+                                        <div class="text-sm text-indigo-600 dark:text-indigo-400">En cours 2024-2025</div>
+                                    </div>
+                                </div>
+                                <div class="w-3 h-3 bg-indigo-500 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- CEH -->
+                        <div class="p-3 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg border border-indigo-200 dark:border-indigo-700">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-shield-alt text-indigo-500"></i>
+                                    <div>
+                                        <div class="font-semibold text-indigo-700 dark:text-indigo-300">CEH Formation</div>
+                                        <div class="text-sm text-indigo-600 dark:text-indigo-400">ALPHORM</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-check-circle text-green-500"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- LinkedIn Learning -->
+                        <div class="p-3 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg border border-indigo-200 dark:border-indigo-700">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <i class="fab fa-linkedin text-indigo-500"></i>
+                                    <div>
+                                        <div class="font-semibold text-indigo-700 dark:text-indigo-300">15+ Formations</div>
+                                        <div class="text-sm text-indigo-600 dark:text-indigo-400">LinkedIn Learning</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-check-circle text-green-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to action certifications -->
+            <div class="text-center mt-16">
+                <div class="inline-flex items-center gap-4 p-6 bg-gradient-to-r from-purple-500 to-red-600 rounded-xl text-white shadow-xl">
+                    <i class="fas fa-graduation-cap text-2xl"></i>
+                    <div class="text-left">
+                        <div class="font-bold text-lg">Objectif 2025</div>
+                        <div class="text-purple-100">C|CT (Certified Cybersecurity Technician) - EC-Council</div>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION MODULES C|CT ÉTUDIÉS ========== -->
+    <section id="modules-cct" class="py-20 px-4 bg-white dark:bg-dark-bg relative overflow-hidden">
+        <div class="container mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mb-6">
+                    <i class="fas fa-book-open text-2xl text-white"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Modules C|CT EC-Council étudiés</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Voici l’ensemble des modules du cursus <span class="font-semibold text-purple-600">Certified Cybersecurity Technician</span> que j’ai étudiés et validés.
+                </p>
+            </div>
+            <div class="text-center mb-6">
+                <span class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900/20 dark:to-indigo-900/20 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium border border-purple-200 dark:border-purple-700">
+                    <i class="fas fa-graduation-cap mr-2"></i>
+                    Formation C|CT en cours - 9/25 modules présentés
+                </span>
+            </div>
+            <!-- Accordéon des modules -->
+            <div class="space-y-4 max-w-4xl mx-auto">
+                <!-- Module 01 -->
+                <details class="group border-l-4 border-indigo-500 bg-indigo-50 dark:bg-indigo-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-indigo-700 dark:text-indigo-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 01 : Threats & Vulnerabilities</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="mt-4 space-y-3">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-indigo-200 dark:border-indigo-700">
+                            <h5 class="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">📚 Concepts théoriques maîtrisés</h5>
+                            <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                <li>Threats Sources, Threat Actors/Agents, Malware & Types</li>
+                                <li>Vulnerabilities & Types</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-lg p-4 border border-red-200 dark:border-red-700">
+                            <h5 class="font-semibold text-red-600 dark:text-red-400 mb-2">🛠️ Labs pratiques réalisés</h5>
+                            <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                <li><strong>Création de Trojans</strong> - Développement de malwares pour accès système</li>
+                                <li><strong>Création de Virus</strong> - Programmation de codes malveillants auto-réplicants</li>
+                                <li><strong>Création de Worms</strong> - Utilisation d'Internet Worm Maker Thing</li>
+                                <li><strong>Surveillance système</strong> - Monitoring avec Spytech SpyAgent</li>
+                                <li><strong>Recherche de vulnérabilités</strong> - Exploitation de sites de vulnérabilités</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-700">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-certificate text-green-600 text-sm"></i>
+                                <span class="text-green-700 dark:text-green-300 text-sm font-medium">Lab validé - Compétences certifiées EC-Council</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                <!-- Module 02 -->
+                <details class="group border-l-4 border-red-500 bg-red-50 dark:bg-red-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-red-700 dark:text-red-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 02 : Information Security Attacks</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="mt-4 space-y-3">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-red-200 dark:border-red-700">
+                            <h5 class="font-semibold text-red-600 dark:text-red-400 mb-2">📚 Concepts théoriques maîtrisés</h5>
+                            <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                <li>Hacking Methodologies & Frameworks</li>
+                                <li>Network, Application, OS-level Attacks</li>
+                                <li>Social Engineering, Wireless, IoT/OT/Cloud, Crypto Attacks</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-4 border border-purple-200 dark:border-purple-700">
+                            <h5 class="font-semibold text-purple-600 dark:text-purple-400 mb-2">🎯 Attaques pratiquées en laboratoire</h5>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="space-y-1">
+                                    <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                        <li><strong>MITM Attack</strong> - Cain & Abel</li>
+                                        <li><strong>MAC Flooding</strong> - macof</li>
+                                        <li><strong>DoS Attack</strong> - hping3</li>
+                                        <li><strong>SQL Injection</strong> - sqlmap</li>
+                                        <li><strong>Parameter Tampering</strong> - Burp Suite</li>
+                                    </ul>
+                                </div>
+                                <div class="space-y-1">
+                                    <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                        <li><strong>Password Auditing</strong> - John-the-Ripper</li>
+                                        <li><strong>Social Engineering</strong> - Credential Sniffing</li>
+                                        <li><strong>WPA2 Cracking</strong> - Aircrack-ng</li>
+                                        <li><strong>Android Hacking</strong> - Binary Payloads</li>
+                                        <li><strong>Cloud Exploitation</strong> - AWS S3 Buckets</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-4 border border-orange-200 dark:border-orange-700">
+                            <h5 class="font-semibold text-orange-600 dark:text-orange-400 mb-2">🛠️ Arsenal d'outils maîtrisés</h5>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">Cain & Abel</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">macof</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">hping3</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">sqlmap</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">Burp Suite</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">John-the-Ripper</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">Aircrack-ng</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-medium">AWS CLI</span>
+                            </div>
+                        </div>
+                        <div class="bg-red-50 dark:bg-red-900/20 rounded-lg p-3 border border-red-200 dark:border-red-700">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-certificate text-red-600 text-sm"></i>
+                                <span class="text-red-700 dark:text-red-300 text-sm font-medium">10 Labs avancés validés - Expertise offensive certifiée EC-Council</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                <!-- Module 03 -->
+                <details class="group border-l-4 border-cyan-500 bg-cyan-50 dark:bg-cyan-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-cyan-700 dark:text-cyan-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 03 : Network Security Fundamentals</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="list-disc ml-8 mt-2 text-gray-700 dark:text-gray-200 text-base space-y-1">
+                        <li>Information Security & Network Security Fundamentals</li>
+                    </ul>
+                </details>
+                <!-- Module 04 -->
+                <details class="group border-l-4 border-green-500 bg-green-50 dark:bg-green-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-green-700 dark:text-green-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 04 : Identification, Authentication & Authorization</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="list-disc ml-8 mt-2 text-gray-700 dark:text-gray-200 text-base space-y-1">
+                        <li>Access Control Principles, IAM</li>
+                    </ul>
+                </details>
+                <!-- Module 05 -->
+                <details class="group border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-yellow-700 dark:text-yellow-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 05 : Network Security Controls - Administrative</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="list-disc ml-8 mt-2 text-gray-700 dark:text-gray-200 text-base space-y-1">
+                        <li>Regulatory Frameworks, Security Governance, Policies, Awareness Training</li>
+                    </ul>
+                </details>
+                <!-- Module 06 -->
+                <details class="group border-l-4 border-gray-500 bg-gray-50 dark:bg-gray-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-gray-700 dark:text-gray-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 06 : Network Security Controls - Physical</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="list-disc ml-8 mt-2 text-gray-700 dark:text-gray-200 text-base space-y-1">
+                        <li>Physical Security, Environmental Controls, Workplace Security</li>
+                    </ul>
+                </details>
+                <!-- Module 07 -->
+                <details class="group border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-blue-700 dark:text-blue-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 07 : Network Security Controls - Technical</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="mt-4 space-y-3">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-blue-200 dark:border-blue-700">
+                            <h5 class="font-semibold text-blue-600 dark:text-blue-400 mb-2">📚 Technologies sécurisées maîtrisées</h5>
+                            <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                <li>Network Protocols, Segmentation, Firewalls, IDS/IPS</li>
+                                <li>Honeypots, VPN, Antivirus</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-lg p-4 border border-indigo-200 dark:border-indigo-700">
+                            <h5 class="font-semibold text-indigo-600 dark:text-indigo-400 mb-2">🛡️ Contrôles techniques déployés</h5>
+                            <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                <li><strong>Firewalls/pfSense</strong> - Configuration et règles avancées</li>
+                                <li><strong>IDS/IPS Snort</strong> - Détection d'intrusions en temps réel</li>
+                                <li><strong>VLAN Segmentation</strong> - Isolation réseau et micro-segmentation</li>
+                                <li><strong>VPN IPSec/SSL</strong> - Tunnels sécurisés et accès distant</li>
+                                <li><strong>Honeypots</strong> - Pièges de sécurité et collecte de renseignements</li>
+                                <li><strong>Network Monitoring</strong> - Supervision continue du trafic</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-700">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-shield-alt text-blue-600 text-sm"></i>
+                                <span class="text-blue-700 dark:text-blue-300 text-sm font-medium">Expertise en architecture de sécurité réseau</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                <!-- Module 08 -->
+                <details class="group border-l-4 border-pink-500 bg-pink-50 dark:bg-pink-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-pink-700 dark:text-pink-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 08 : Network Security Assessment Techniques</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <div class="mt-4 space-y-3">
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-4 border border-pink-200 dark:border-pink-700">
+                            <h5 class="font-semibold text-pink-600 dark:text-pink-400 mb-2">📚 Méthodologies maîtrisées</h5>
+                            <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                <li>Threat Hunting, Threat Intelligence, Vulnerability Assessment</li>
+                                <li>Penetration Testing, Asset Management</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-r from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20 rounded-lg p-4 border border-cyan-200 dark:border-cyan-700">
+                            <h5 class="font-semibold text-cyan-600 dark:text-cyan-400 mb-2">🔍 Outils et techniques pratiqués</h5>
+                            <ul class="list-disc ml-4 text-gray-700 dark:text-gray-200 text-sm space-y-1">
+                                <li><strong>Nmap</strong> - Découverte et reconnaissance réseau</li>
+                                <li><strong>Nessus/OpenVAS</strong> - Scans de vulnérabilités automatisés</li>
+                                <li><strong>Metasploit</strong> - Framework d'exploitation avancé</li>
+                                <li><strong>Wireshark</strong> - Analyse de trafic réseau en profondeur</li>
+                                <li><strong>OSINT</strong> - Collecte de renseignements sources ouvertes</li>
+                                <li><strong>Asset Discovery</strong> - Inventaire et cartographie d'infrastructure</li>
+                            </ul>
+                        </div>
+                        <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-3 border border-yellow-200 dark:border-yellow-700">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-search text-yellow-600 text-sm"></i>
+                                <span class="text-yellow-700 dark:text-yellow-300 text-sm font-medium">Compétences avancées en évaluation de sécurité et red teaming</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+                <!-- Module 09 -->
+                <details class="group border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-900/10 rounded-lg p-4">
+                    <summary class="font-bold text-lg text-purple-700 dark:text-purple-300 cursor-pointer flex items-center justify-between">
+                        <span>Module 09 : Application Security</span>
+                        <i class="fas fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                    </summary>
+                    <ul class="list-disc ml-8 mt-2 text-gray-700 dark:text-gray-200 text-base space-y-1">
+                        <li>Secure Design, Secure Dev, Standards, Testing, Automation</li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION À PROPOS ========== -->
+    <!-- Section avec arrière-plan alternatif, même style que la section projets -->
+    <section id="a-propos" class="py-20 px-4 bg-gray-50 dark:bg-dark-card relative overflow-hidden">
+        
+        <!-- Background pattern cybersécurité -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0 bg-gradient-to-br from-red-500 via-purple-500 to-cyan-500"></div>
+        </div>
+        
+        <div class="container mx-auto relative z-10">
+            
+            <!-- Layout en deux colonnes sur desktop -->
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <!-- ===== COLONNE GAUCHE : PHOTO DE PROFIL CYBERSÉCURITÉ ===== -->
+                <div class="lg:w-1/3 text-center">
+                    <!-- Conteneur avec effet holographique -->
+                    <div class="relative group">
+                        <!-- Cadre extérieur avec gradient cyberpunk -->
+                        <div class="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-red-500 via-purple-600 to-cyan-500 p-1 shadow-2xl">
+                            <!-- Cadre intérieur avec effet glow -->
+                            <div class="w-full h-full rounded-full bg-gray-900 dark:bg-gray-800 p-1 relative overflow-hidden">
+                                <!-- Photo de profil -->
+                                <img src="photo.jpeg" 
+                                     alt="Ousmane TRAORE - Cybersecurity Specialist" 
+                                     class="w-full h-full rounded-full object-cover relative z-10 transition-transform duration-500 group-hover:scale-105">
+                                
+                                <!-- Overlay effet matrix -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-green-500/10 to-transparent animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full"></div>
+                                
+                                <!-- Effet de bordure animée -->
+                                <div class="absolute inset-0 border-2 border-cyan-400/30 rounded-full animate-ping opacity-0 group-hover:opacity-100"></div>
+                                
+                                <!-- Effet de scan cybersécurité -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-transparent via-red-500/20 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-2000 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Badge de statut en ligne -->
+                        <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-gray-800">
+                            <div class="w-3 h-3 bg-green-300 rounded-full animate-pulse"></div>
+                        </div>
+                        
+                        <!-- Nom avec effet cyber -->
+                        <div class="mt-6">
+                            <h3 class="text-xl font-bold bg-gradient-to-r from-red-500 to-cyan-500 bg-clip-text text-transparent">
+                                Ousmane TRAORE
+                            </h3>
+                            <p class="text-purple-600 dark:text-purple-400 font-medium">Cybersecurity Specialist</p>
+                            
+                            <!-- Badge C|CT en formation -->
+                            <div class="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-gradient-to-r from-red-500/20 to-purple-500/20 border border-red-500/30 rounded-full">
+                                <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                                <span class="text-sm font-medium text-red-600 dark:text-red-400">C|CT en formation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== COLONNE DROITE : CONTENU CYBERSÉCURITÉ ===== -->
+                <div class="lg:w-2/3">
+                    
+                    <!-- Titre avec icône -->
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-red-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold">À propos de moi</h2>
+                    </div>
+                    
+                    <!-- Présentation principale -->
+                    <div class="prose max-w-none">
+                        
+                        <!-- Premier paragraphe - Passion cybersécurité -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-lg leading-relaxed">
+                            <span class="text-purple-600 dark:text-purple-400 font-semibold">Passionné par le développement et la cybersécurité</span>, 
+                            j'ai acquis une solide formation en Génie-Logiciel puis une spécialisation en développement Web 
+                            Fullstack et Mobile (L3). Actuellement en cours de certification chez 
+                            <span class="text-red-600 dark:text-red-400 font-semibold">EC-Council</span>, 
+                            une organisation mondialement reconnue pour la qualité de ses formations.
+                        </p>
+                        
+                        <!-- Deuxième paragraphe - Formation et compétences -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-lg leading-relaxed">
+                            Mon parcours m'a permis de maîtriser les technologies modernes et la résolution de problèmes informatiques. 
+                            Fort de mes connaissances en <span class="text-cyan-600 dark:text-cyan-400 font-semibold">administration système Linux</span>, 
+                            <span class="text-green-600 dark:text-green-400 font-semibold">développement Python/Django</span>, 
+                            et outils de sécurité comme <span class="text-red-600 dark:text-red-400 font-semibold">Metasploit et Wireshark</span>.
+                        </p>
+                        
+                        <!-- Troisième paragraphe - Objectifs -->
+                        <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg leading-relaxed">
+                            Mon approche combine expertise technique et veille sécuritaire constante. 
+                            Je me spécialise dans l'<span class="text-purple-600 dark:text-purple-400 font-semibold">audit de sécurité</span>, 
+                            le <span class="text-indigo-600 dark:text-indigo-400 font-semibold">pentesting éthique</span> 
+                            et le développement sécurisé d'applications web modernes.
+                        </p>
+                        
+                        <!-- Certifications en cours -->
+                        <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-red-50 dark:from-purple-900/20 dark:to-red-900/20 rounded-xl border border-purple-200 dark:border-purple-700">
+                            <div class="flex items-center gap-3 mb-3">
+                                <i class="fas fa-graduation-cap text-purple-600"></i>
+                                <h4 class="font-bold text-lg text-purple-700 dark:text-purple-300">Formation en cours</h4>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-semibold text-purple-800 dark:text-purple-200">C|CT - Certified Cybersecurity Technician</div>
+                                    <div class="text-purple-600 dark:text-purple-400">EC-Council • 2024-2025</div>
+                                </div>
+                                <div class="w-4 h-4 bg-purple-500 rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Statistiques rapides -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                            <!-- Formations -->
+                            <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border-t-4 border-red-500">
+                                <div class="text-2xl font-bold text-red-600">15+</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Formations</div>
+                            </div>
+                            <!-- Années d'études -->
+                            <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border-t-4 border-purple-500">
+                                <div class="text-2xl font-bold text-purple-600">4</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Années études</div>
+                            </div>
+                            <!-- Certifications -->
+                            <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border-t-4 border-cyan-500">
+                                <div class="text-2xl font-bold text-cyan-600">3</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Certifications</div>
+                            </div>
+                            <!-- Langues -->
+                            <div class="text-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border-t-4 border-green-500">
+                                <div class="text-2xl font-bold text-green-600">4</div>
+                                <div class="text-sm text-gray-600 dark:text-gray-400">Langues</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Liens vers les réseaux sociaux cybersécurité -->
+                    <div class="flex flex-wrap gap-4">
+                        
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/ousmane-traore-79880a29b" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fab fa-linkedin text-xl"></i>
+                            <span class="font-medium">LinkedIn</span>
+                            <i class="fas fa-external-link-alt text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        
+                        <!-- GitHub -->
+                        <a href="https://github.com/Manous98" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-lg hover:from-gray-900 hover:to-black transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fab fa-github text-xl"></i>
+                            <span class="font-medium">GitHub</span>
+                            <i class="fas fa-external-link-alt text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        
+                        <!-- TryHackMe -->
+                        <a href="https://tryhackme.com/p/ousmanet724" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-flag text-xl"></i>
+                            <span class="font-medium">TryHackMe</span>
+                            <i class="fas fa-external-link-alt text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                        
+                        <!-- CV Download -->
+                        <a href="CV.pdf" download="Ousmane_Traore_CV_Cybersecurite.pdf" class="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <i class="fas fa-download text-xl"></i>
+                            <span class="font-medium">CV</span>
+                            <i class="fas fa-file-pdf text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section formations détaillées -->
+            <div class="mt-20">
+                <h3 class="text-2xl font-bold mb-8 text-center">Parcours de Formation</h3>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- Timeline des formations -->
+                    <div class="relative">
+                        <!-- Ligne verticale -->
+                        <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-red-500 via-purple-500 to-cyan-500"></div>
+                        
+                        <!-- Formation EC-Council -->
+                        <div class="relative flex items-start mb-8">
+                            <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0 z-10">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <div class="ml-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="text-lg font-bold text-red-600">EC-Council Certification</h4>
+                                    <span class="text-sm bg-red-100 dark:bg-red-900/30 text-red-600 px-3 py-1 rounded-full">En cours</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 mb-1">C|CT (Certified Cybersecurity Technician)</p>
+                                <p class="text-sm text-gray-500">2024-2025 • Formation en ligne</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Licence 3 -->
+                        <div class="relative flex items-start mb-8">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 z-10">
+                                <i class="fas fa-code text-white text-xl"></i>
+                            </div>
+                            <div class="ml-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex-1">
+                                <h4 class="text-lg font-bold text-purple-600 mb-2">Licence 3 Génie-Logiciel</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-1">Spécialisation Développement Web/Mobile</p>
+                                <p class="text-sm text-gray-500">Université Virtuelle du Burkina Faso</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Formations autodidacte -->
+                        <div class="relative flex items-start">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 z-10">
+                                <i class="fas fa-laptop-code text-white text-xl"></i>
+                            </div>
+                            <div class="ml-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex-1">
+                                <h4 class="text-lg font-bold text-cyan-600 mb-2">Formations Autodidacte</h4>
+                                <p class="text-gray-600 dark:text-gray-400 mb-3">LinkedIn Learning, UDEMY, ALPHORM</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                    <div>• Administration Linux/Windows</div>
+                                    <div>• Développement Web Full-Stack</div>
+                                    <div>• Administration Cloud/Microsoft365</div>
+                                    <div>• Base de données (PostgreSQL, MySQL)</div>
+                                    <div>• CEH Formation complète</div>
+                                    <div>• Test logiciel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION CONTACT CYBERSÉCURITÉ ========== -->
+    <section id="contact" class="py-20 px-4 relative overflow-hidden">
+        
+        <!-- Background pattern cybersécurité -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0 bg-gradient-to-br from-red-500 via-purple-500 to-cyan-500"></div>
+        </div>
+        
+        <div class="container mx-auto max-w-6xl relative z-10">
+            
+            <!-- Header section -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-red-600 rounded-full mb-6">
+                    <i class="fas fa-envelope-open-text text-2xl text-white"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Me Contacter</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Prêt à collaborer sur des projets de cybersécurité ou à discuter d'opportunités ? 
+                    Contactez-moi via les moyens ci-dessous.
+                </p>
+            </div>
+            
+            <!-- Grid principal -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                
+                <!-- ===== INFORMATIONS DE CONTACT ===== -->
+                <div class="lg:col-span-1 space-y-6">
+                    
+                    <!-- Carte Adresse -->
+                    <div class="group bg-white dark:bg-dark-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-cyan-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-white text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-lg text-cyan-600 dark:text-cyan-400 mb-2">Localisation</h4>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Ouagadougou, Bendogo<br>
+                                    <span class="text-sm text-gray-500">Burkina Faso 🇧🇫</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carte Email -->
+                    <div class="group bg-white dark:bg-dark-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-purple-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-white text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-lg text-purple-600 dark:text-purple-400 mb-2">Email</h4>
+                                <a href="mailto:ousmanet724@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+                                    ousmanet724@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carte Téléphone -->
+                    <div class="group bg-white dark:bg-dark-bg p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-green-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-whatsapp text-white text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-lg text-green-600 dark:text-green-400 mb-2">WhatsApp</h4>
+                                <div class="space-y-1">
+                                    <a href="tel:+22676509466" class="block text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                        +226 76 50 94 66
+                                    </a>
+                                    <a href="tel:+22677598859" class="block text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                        +226 77 59 88 59
+                                    </a>
+                                    <a href="tel:+22605013010" class="block text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                        +226 05 01 30 10
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Réseaux sociaux -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl text-white">
+                        <h4 class="font-bold text-lg mb-4">Réseaux Sociaux</h4>
+                        <div class="space-y-3">
+                            <a href="https://www.linkedin.com/in/ousmane-traore-79880a29b" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 p-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-all duration-300 transform hover:scale-105">
+                                <i class="fab fa-linkedin text-xl"></i>
+                                <span>LinkedIn</span>
+                                <i class="fas fa-external-link-alt text-sm opacity-0 group-hover:opacity-100 transition-opacity ml-auto"></i>
+                            </a>
+                            <a href="https://github.com/Manous98" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-all duration-300 transform hover:scale-105">
+                                <i class="fab fa-github text-xl"></i>
+                                <span>GitHub</span>
+                                <i class="fas fa-external-link-alt text-sm opacity-0 group-hover:opacity-100 transition-opacity ml-auto"></i>
+                            </a>
+                            <a href="https://tryhackme.com/p/ousmanet724" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 p-3 bg-red-600 hover:bg-red-700 rounded-lg transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-flag text-xl"></i>
+                                <span>TryHackMe</span>
+                                <i class="fas fa-external-link-alt text-sm opacity-0 group-hover:opacity-100 transition-opacity ml-auto"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ===== FORMULAIRE DE CONTACT ===== -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg">
+                        
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-purple-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-paper-plane text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold">Envoyez-moi un message</h3>
+                        </div>
+                        
+                        <form id="contact-form" class="space-y-6">
+                            
+                            <!-- Première ligne : Nom et Email -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                        <i class="fas fa-user text-purple-500 mr-2"></i>Nom complet
+                                    </label>
+                                    <input type="text" id="name" 
+                                           class="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-800 text-base transition-colors" 
+                                           placeholder="Votre nom complet" required>
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                        <i class="fas fa-envelope text-purple-500 mr-2"></i>Email
+                                    </label>
+                                    <input type="email" id="email" 
+                                           class="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-800 text-base transition-colors" 
+                                           placeholder="votre.email@exemple.com" required>
+                                </div>
+                            </div>
+                            
+                            <!-- Sujet -->
+                            <div>
+                                <label for="subject" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                    <i class="fas fa-tag text-purple-500 mr-2"></i>Sujet
+                                </label>
+                                <select id="subject" class="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-800 text-base transition-colors">
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="cybersecurity">🔒 Projet Cybersécurité</option>
+                                    <option value="pentest">🔍 Test de Pénétration</option>
+                                    <option value="development">💻 Développement Web</option>
+                                    <option value="consultation">💡 Consultation</option>
+                                    <option value="formation">📚 Formation</option>
+                                    <option value="collaboration">🤝 Collaboration</option>
+                                    <option value="other">❓ Autre</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Message -->
+                            <div>
+                                <label for="message" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
+                                    <i class="fas fa-comment-alt text-purple-500 mr-2"></i>Message
+                                </label>
+                                <textarea id="message" rows="6" 
+                                          class="w-full px-4 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-800 text-base transition-colors resize-vertical" 
+                                          placeholder="Décrivez votre projet, vos besoins ou votre question..." required></textarea>
+                            </div>
+                            
+                            <!-- Bouton d'envoi -->
+                            <div class="text-center">
+                                <button type="submit" class="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 to-red-600 text-white rounded-lg hover:from-purple-600 hover:to-red-700 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl font-bold text-lg">
+                                    <i class="fas fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
+                                    Envoyer le message
+                                    <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 transition-all"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to action section -->
+            <div class="text-center">
+                <div class="inline-flex flex-col md:flex-row items-center gap-6 p-8 bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl text-white shadow-xl">
+                    <div class="text-center md:text-left">
+                        <div class="text-2xl font-bold mb-2">🚀 Prêt pour votre projet ?</div>
+                        <div class="text-gray-300">Sécurisez votre infrastructure avec un expert certifié C|CT</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="mailto:ousmanet724@gmail.com" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors font-semibold">
+                            Contactez-moi
+                        </a>
+                        <a href="tel:+22676509466" class="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors font-semibold">
+                            Appelez-moi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PIED DE PAGE ========== -->
+    <footer class="bg-gray-900 dark:bg-gray-950 py-12 px-4 text-white relative overflow-hidden">
+        
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500 via-purple-500 to-cyan-500"></div>
+        </div>
+        
+        <div class="container mx-auto relative z-10">
+            
+            <!-- Contenu principal footer -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                
+                <!-- Section À propos -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 bg-gradient-to-r from-red-400 to-cyan-400 bg-clip-text text-transparent">
+                        Ousmane TRAORE
+                    </h4>
+                    <p class="text-gray-300 mb-4">
+                        Spécialiste en cybersécurité passionné, actuellement en formation C|CT chez EC-Council. 
+                        Expert en pentesting éthique et développement sécurisé.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="mailto:ousmanet724@gmail.com" class="w-10 h-10 bg-gradient-to-r from-purple-500 to-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ousmane-traore-79880a29b" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/Manous98" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gradient-to-r from-gray-700 to-gray-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://tryhackme.com/p/ousmanet724" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fas fa-flag"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Section Navigation rapide -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Navigation</h4>
+                    <div class="space-y-2">
+                        <a href="#accueil" class="block text-gray-300 hover:text-white transition-colors">🏠 Accueil</a>
+                        <a href="#projets" class="block text-gray-300 hover:text-white transition-colors">🚀 Projets</a>
+                        <a href="#competences" class="block text-gray-300 hover:text-white transition-colors">⚡ Compétences</a>
+                        <a href="#a-propos" class="block text-gray-300 hover:text-white transition-colors">👨‍💻 À propos</a>
+                        <a href="#contact" class="block text-gray-300 hover:text-white transition-colors">📧 Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Section Certifications -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4">Certifications</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                            <span class="text-gray-300 text-sm">C|CT EC-Council (En cours)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-300 text-sm">CEH Formation ALPHORM</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <span class="text-gray-300 text-sm">15+ Formations LinkedIn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Séparateur -->
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Ousmane TRAORE. Tous droits réservés. Portfolio cybersécurité créé avec ❤️ et TailwindCSS.
+                    </p>
+                    <div class="flex items-center gap-4 text-sm text-gray-400">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-shield-alt text-green-500"></i>
+                            Sécurisé
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-mobile-alt text-blue-500"></i>
+                            Responsive
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-rocket text-purple-500"></i>
+                            Moderne
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT INTERACTIF ========== -->
+    <!-- Script pour la fonctionnalité du menu mobile -->
+    <script>
+        // Gestion du menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupération des éléments du DOM
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('menu');
+            
+            // Vérification que les éléments existent
+            if (mobileMenuButton && menu) {
+                // Ajout de l'événement de clic sur le bouton du menu mobile
+                mobileMenuButton.addEventListener('click', function() {
+                    // Basculer la visibilité du menu
+                    menu.classList.toggle('hidden');
+                });
+                
+                // Fermer le menu quand on clique sur un lien (navigation)
+                const menuLinks = menu.querySelectorAll('a');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        // Fermer le menu sur mobile après avoir cliqué sur un lien
+                        menu.classList.add('hidden');
+                    });
+                });
+                
+                // Fermer le menu quand on clique à l'extérieur (pour mobile)
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuButton.contains(event.target) && !menu.contains(event.target)) {
+                        menu.classList.add('hidden');
+                    }
+                });
+            }
+            
+            // Animation scroll fluide pour les liens d'ancrage
+            const anchorLinks = document.querySelectorAll('a[href^="#"]');
+            anchorLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Gestion du formulaire de contact
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Ici, vous pourriez ajouter la logique d'envoi du formulaire
+                // Par exemple, envoi via une API ou un service d'emailing
+                
+                alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+                
+                // Réinitialiser le formulaire
+                contactForm.reset();
+            });
+        }
+    </script>
+
+<!-- Fermeture des balises HTML -->
+</body>
+</html>
