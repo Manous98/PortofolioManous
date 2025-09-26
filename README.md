@@ -6,7 +6,7 @@ Portfolio professionnel spécialisé en **cybersécurité** présentant mes comp
 **🧑‍💻 Profil :** Spécialiste cybersécurité en formation C|CT (Certified Cybersecurity Technician) chez EC-Council
 
 ## 🚀 Accès au Portfolio
-**👀 Voir le portfolio en ligne :** [https://manous98.github.io/cybersecurity-portfolio/](https://manous98.github.io/cybersecurity-portfolio/)
+**👀 Voir le portfolio en ligne :** [https://manous98.github.io/PortofolioManous/](https://manous98.github.io/PortofolioManous/)
 
 ## 🔧 Technologies Utilisées
 - **Frontend :** HTML5, CSS3, JavaScript
@@ -61,12 +61,12 @@ Portfolio professionnel spécialisé en **cybersécurité** présentant mes comp
 ## 🚀 Déploiement Local
 1. Cloner le repository :
    ```bash
-   git clone https://github.com/Manous98/cybersecurity-portfolio.git
+   git clone https://github.com/Manous98/PortofolioManous.git
    ```
 
 2. Ouvrir le fichier principal :
    ```bash
-   cd cybersecurity-portfolio
+   cd PortofolioManous
    open porto-folio_file.html
    ```
 
