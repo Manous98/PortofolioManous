@@ -354,6 +354,13 @@
                             Me Contacter
                         </a>
                     </li>
+                    <li>
+                        <button id="theme-toggle" class="block w-full text-left px-4 py-2 rounded-lg hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-300">
+                            <i class="fas fa-moon dark:hidden"></i>
+                            <i class="fas fa-sun hidden dark:inline"></i>
+                            <span class="ml-2">Thème</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -2316,6 +2323,49 @@
             // Initialiser bouton scroll et thèmes
             initScrollToTop();
             initThemeSelector();
+            
+            // ========== DÉTECTION AUTOMATIQUE MODE SOMBRE ==========
+            // Détection automatique de la préférence de mode sombre du système
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // Si le système préfère le mode sombre, ajouter la classe 'dark'
+                document.documentElement.classList.add('dark');
+            }
+            
+            // Écouter les changements de préférence du système
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                if (event.matches) {
+                    // Mode sombre activé
+                    document.documentElement.classList.add('dark');
+                } else {
+                    // Mode clair activé
+                    document.documentElement.classList.remove('dark');
+                }
+            });
+            
+            // ========== BOUTON BASCULEMENT THÈME SOMBRE ==========
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.documentElement.classList.toggle('dark');
+                    
+                    // Sauvegarder la préférence utilisateur
+                    if (document.documentElement.classList.contains('dark')) {
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+            }
+            
+            // Charger le thème sauvegardé au démarrage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
             
             // ========== MENU MOBILE (EXISTANT) ==========
             const mobileMenuButton = document.getElementById('mobile-menu-button');
