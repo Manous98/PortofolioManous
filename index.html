@@ -22,65 +22,279 @@
     
     <!-- Configuration personnalisée de TailwindCSS -->
     <script>
-        // Configuration du thème TailwindCSS
         tailwind.config = {
-            // Activation du mode sombre basé sur la classe 'dark'
             darkMode: 'class',
-            
-            // Extension du thème par défaut
             theme: {
                 extend: {
-                    // Définition des couleurs personnalisées du site
                     colors: {
-                        primary: '#5D5CDE',      // Couleur principale violette
-                        secondary: '#6366F1',    // Couleur secondaire indigo
-                        
-                        // Palette pour le mode sombre
-                        dark: {
-                            bg: '#181818',        // Arrière-plan sombre
-                            card: '#252525',      // Cartes en mode sombre
-                        },
-                        
-                        // Palette pour le mode clair
-                        light: {
-                            bg: '#FFFFFF',        // Arrière-plan clair
-                            card: '#F9FAFB',      // Cartes en mode clair
-                        }
+                        primary: '#5D5CDE',
+                        secondary: '#6366F1',
+                        dark: { bg: '#181818', card: '#252525' },
+                        light: { bg: '#FFFFFF', card: '#F9FAFB' }
                     },
-                    
-                    // Animations personnalisées
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-in-out',  // Animation d'apparition
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
                     },
-                    
-                    // Définition des keyframes pour les animations
                     keyframes: {
                         fadeIn: {
-                            '0%': { opacity: '0' },     // Début invisible
-                            '100%': { opacity: '1' },   // Fin visible
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
                         }
                     }
                 }
             }
         }
-
-        // Détection automatique de la préférence de mode sombre du système
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // Si le système préfère le mode sombre, ajouter la classe 'dark'
-            document.documentElement.classList.add('dark');
-        }
-        
-        // Écouter les changements de préférence du système
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                // Mode sombre activé
-                document.documentElement.classList.add('dark');
-            } else {
-                // Mode clair activé
-                document.documentElement.classList.remove('dark');
-            }
-        });
     </script>
+    <!-- Effets cyberpunk avancés -->
+    <style>
+        :root {
+            --primary-color: #5D5CDE;
+            --accent-color: #ff0040;
+            --cyber-color: #8b00ff;
+            --matrix-color: #00ffff;
+        }
+        @keyframes progressFill {
+            from { width: 0%; box-shadow: 0 0 10px currentColor; }
+            to { width: var(--progress-width); box-shadow: 0 0 20px currentColor, inset 0 0 10px rgba(255,255,255,0.2); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px currentColor; }
+            50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        @keyframes matrixRain {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100px); opacity: 0; }
+        }
+        @keyframes rocket {
+            0% { transform: scale(1) rotate(45deg); }
+            50% { transform: scale(1.2) rotate(45deg) translateY(-10px); }
+            100% { transform: scale(1) rotate(45deg); }
+        }
+        .skill-progress {
+            animation: progressFill 2s ease-in-out forwards;
+            animation-delay: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        .group:hover .skill-progress { animation: glowPulse 1s infinite alternate; }
+        .glitch:hover { animation: glitch 0.3s infinite; }
+        .matrix-rain::after {
+            content: '010101';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            color: #00ff41;
+            font-family: monospace;
+            font-size: 12px;
+            animation: matrixRain 2s infinite;
+            opacity: 0;
+        }
+        .group:hover .matrix-rain::after { animation-play-state: running; }
+        @media (max-width: 640px) {
+            .text-4xl { font-size: 2rem !important; line-height: 1.2; }
+            .text-6xl { font-size: 2.5rem !important; line-height: 1.1; }
+            .text-7xl { font-size: 3rem !important; line-height: 1.1; }
+            .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+            .py-32 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+            .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .lg\\:grid-cols-3 { grid-template-columns: 1fr !important; }
+            .lg\\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            .md\\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            #menu { backdrop-filter: blur(10px); background: rgba(0,0,0,0.9) !important; }
+            #cyber-bg canvas { opacity: 0.05 !important; }
+            .group { margin-bottom: 1rem; padding: 1rem !important; }
+            .theme-btn { width: 3rem !important; height: 3rem !important; }
+            #scrollToTop { width: 3.5rem !important; height: 3.5rem !important; bottom: 1rem !important; right: 1rem !important; }
+        }
+        @media (hover: none) {
+            .group:hover { transform: scale(1.02); }
+            .hover\\:scale-110:hover { transform: scale(1.05); }
+        }
+        * { scroll-behavior: smooth; }
+        img { content-visibility: auto; }
+        .group, .skill-item { will-change: transform, opacity; }
+    </style>
+
+    <!-- ========== CSS ANIMATIONS CYBERPUNK AVANCÉES ========== -->
+    <style>
+        :root {
+            --primary-color: #5D5CDE;
+            --accent-color: #ff0040;
+            --cyber-color: #8b00ff;
+            --matrix-color: #00ffff;
+        }
+
+        /* Animations de progression avec effets */
+        @keyframes progressFill {
+            from { 
+                width: 0%; 
+                box-shadow: 0 0 10px currentColor;
+            }
+            to { 
+                width: var(--progress-width); 
+                box-shadow: 0 0 20px currentColor, inset 0 0 10px rgba(255,255,255,0.2);
+            }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 5px currentColor; }
+            50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        @keyframes matrixRain {
+            0% { transform: translateY(-100px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100px); opacity: 0; }
+        }
+
+        @keyframes rocket {
+            0% { transform: scale(1) rotate(45deg); }
+            50% { transform: scale(1.2) rotate(45deg) translateY(-10px); }
+            100% { transform: scale(1) rotate(45deg); }
+        }
+
+        /* Classes pour les effets */
+        .skill-progress {
+            animation: progressFill 2s ease-in-out forwards;
+            animation-delay: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        .group:hover .skill-progress {
+            animation: glowPulse 1s infinite alternate;
+        }
+
+        .glitch:hover {
+            animation: glitch 0.3s infinite;
+        }
+
+        .matrix-rain::after {
+            content: '010101';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            color: #00ff41;
+            font-family: monospace;
+            font-size: 12px;
+            animation: matrixRain 2s infinite;
+            opacity: 0;
+        }
+
+        .group:hover .matrix-rain::after {
+            animation-play-state: running;
+        }
+
+        /* Optimisations responsive */
+        @media (max-width: 640px) {
+            .text-4xl { font-size: 2rem !important; line-height: 1.2; }
+            .text-6xl { font-size: 2.5rem !important; line-height: 1.1; }
+            .text-7xl { font-size: 3rem !important; line-height: 1.1; }
+            .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+            .py-32 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+            .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .lg\\:grid-cols-3 { grid-template-columns: 1fr !important; }
+            .lg\\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            .md\\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            
+            #menu {
+                backdrop-filter: blur(10px);
+                background: rgba(0,0,0,0.9) !important;
+            }
+            
+            #cyber-bg canvas {
+                opacity: 0.05 !important;
+            }
+            
+            .group {
+                margin-bottom: 1rem;
+                padding: 1rem !important;
+            }
+            
+            .theme-btn {
+                width: 3rem !important;
+                height: 3rem !important;
+            }
+            
+            #scrollToTop {
+                width: 3.5rem !important;
+                height: 3.5rem !important;
+                bottom: 1rem !important;
+                right: 1rem !important;
+            }
+        }
+
+        @media (hover: none) {
+            .group:hover {
+                transform: scale(1.02);
+            }
+            
+            .hover\\:scale-110:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        img {
+            content-visibility: auto;
+            loading: lazy;
+        }
+
+        .group, .skill-item {
+            will-change: transform, opacity;
+        }
+    </style>
 </head>
 <!-- DÉBUT DU CORPS DE LA PAGE -->
 <!-- Classes : arrière-plan adaptatif (clair/sombre), texte adaptatif, transition fluide -->
@@ -158,10 +372,10 @@
         <!-- Conteneur centré pour le contenu -->
         <div class="container mx-auto text-center relative z-10">
             
-            <!-- Badge de spécialisation -->
+            <!-- Badge de spécialisation avec effet typewriter -->
             <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full mb-6">
                 <i class="fas fa-shield-alt text-red-400"></i>
-                <span class="text-sm font-medium text-red-400">Cybersecurity Specialist</span>
+                <span id="typewriter" class="text-sm font-medium text-red-400">Cybersecurity Specialist</span>
             </div>
             
             <!-- Titre principal avec effet cyberpunk -->
@@ -1792,33 +2006,333 @@
         </div>
     </footer>
 
-    <!-- ========== JAVASCRIPT INTERACTIF ========== -->
-    <!-- Script pour la fonctionnalité du menu mobile -->
+    <!-- ========== JAVASCRIPT CYBERPUNK AVANCÉ ========== -->
     <script>
-        // Gestion du menu mobile
+        // ========== EFFET TYPEWRITER CYBERPUNK ==========
+        const texts = [
+            "Cybersecurity Specialist",
+            "Ethical Hacker", 
+            "Network Security Expert",
+            "C|CT EC-Council Student",
+            "Python Developer",
+            "Penetration Tester"
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function typeWriter() {
+            if (typewriterElement && charIndex < texts[textIndex].length) {
+                typewriterElement.textContent += texts[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else if (typewriterElement) {
+                setTimeout(eraseText, 2000);
+            }
+        }
+
+        function eraseText() {
+            if (typewriterElement && charIndex > 0) {
+                typewriterElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, 50);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        // ========== PARTICULES MATRIX CYBERPUNK ==========
+        function createMatrixParticles() {
+            const cyberBg = document.getElementById('cyber-bg');
+            if (!cyberBg) return;
+            
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.zIndex = '1';
+            canvas.style.opacity = '0.1';
+            canvas.style.pointerEvents = 'none';
+            
+            cyberBg.appendChild(canvas);
+            
+            const particles = [];
+            const colors = ['#ff0040', '#8b00ff', '#00ffff', '#00ff40'];
+            
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 3 + 1,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    life: Math.random() * 100 + 50
+                });
+            }
+            
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach((particle, index) => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    particle.life--;
+                    
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+                    
+                    ctx.fillStyle = particle.color;
+                    ctx.globalAlpha = particle.life / 100;
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    if (particle.life <= 0) {
+                        particle.x = Math.random() * canvas.width;
+                        particle.y = Math.random() * canvas.height;
+                        particle.life = Math.random() * 100 + 50;
+                        particle.color = colors[Math.floor(Math.random() * colors.length)];
+                    }
+                });
+                
+                ctx.globalAlpha = 0.1;
+                particles.forEach((p1, i) => {
+                    particles.slice(i + 1).forEach(p2 => {
+                        const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+                        if (distance < 100) {
+                            ctx.strokeStyle = '#00ffff';
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    });
+                });
+                
+                requestAnimationFrame(animateParticles);
+            }
+            
+            animateParticles();
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // ========== ANIMATIONS AU SCROLL ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // ========== COMPTEURS ANIMÉS ==========
+        function animateCounters() {
+            const counters = document.querySelectorAll('.text-2xl.font-bold, .text-3xl.font-bold');
+            
+            counters.forEach(counter => {
+                const text = counter.textContent;
+                const number = parseInt(text.replace(/[^0-9]/g, ''));
+                
+                if (number > 0) {
+                    let current = 0;
+                    const increment = number / 60;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= number) {
+                            counter.textContent = text;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = text.replace(/[0-9]+/, Math.floor(current));
+                        }
+                    }, 50);
+                }
+            });
+        }
+
+        // ========== ANIMATION BARRES DE COMPÉTENCES ==========
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('[style*="width:"]');
+            
+            skillBars.forEach(bar => {
+                if (bar.style.width) {
+                    const width = bar.style.width;
+                    bar.style.setProperty('--progress-width', width);
+                    bar.style.width = '0%';
+                    bar.classList.add('skill-progress');
+                }
+            });
+        }
+
+        // ========== BOUTON SCROLL TO TOP ==========
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (!scrollToTopBtn) return;
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.style.opacity = '1';
+                    scrollToTopBtn.style.pointerEvents = 'auto';
+                    scrollToTopBtn.style.transform = 'scale(1) rotate(45deg)';
+                } else {
+                    scrollToTopBtn.style.opacity = '0';
+                    scrollToTopBtn.style.pointerEvents = 'none';
+                    scrollToTopBtn.style.transform = 'scale(0.8) rotate(45deg)';
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                scrollToTopBtn.style.animation = 'rocket 0.5s ease-out';
+                setTimeout(() => {
+                    scrollToTopBtn.style.animation = '';
+                }, 500);
+            });
+        }
+
+        // ========== SYSTÈME DE THÈMES CYBERPUNK ==========
+        const themes = {
+            default: {
+                '--primary-color': '#5D5CDE',
+                '--accent-color': '#ff0040',
+                '--cyber-color': '#8b00ff',
+                '--matrix-color': '#00ffff'
+            },
+            matrix: {
+                '--primary-color': '#00ff41',
+                '--accent-color': '#008f11',
+                '--cyber-color': '#004f08',
+                '--matrix-color': '#00ff41'
+            },
+            cyber: {
+                '--primary-color': '#ff6600',
+                '--accent-color': '#ffaa00',
+                '--cyber-color': '#ff3300',
+                '--matrix-color': '#ffff00'
+            },
+            neon: {
+                '--primary-color': '#ff1493',
+                '--accent-color': '#ff69b4',
+                '--cyber-color': '#ff00ff',
+                '--matrix-color': '#ffb6c1'
+            }
+        };
+
+        function initThemeSelector() {
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    const root = document.documentElement;
+                    
+                    Object.entries(themes[theme]).forEach(([property, value]) => {
+                        root.style.setProperty(property, value);
+                    });
+                    
+                    document.body.style.transition = 'all 0.5s ease';
+                    
+                    btn.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        btn.style.transform = 'scale(1)';
+                    }, 200);
+                    
+                    localStorage.setItem('cyberpunk-theme', theme);
+                });
+            });
+
+            const savedTheme = localStorage.getItem('cyberpunk-theme');
+            if (savedTheme && themes[savedTheme]) {
+                const root = document.documentElement;
+                Object.entries(themes[savedTheme]).forEach(([property, value]) => {
+                    root.style.setProperty(property, value);
+                });
+            }
+        }
+
+        // ========== INITIALISATION GLOBALE ==========
         document.addEventListener('DOMContentLoaded', function() {
-            // Récupération des éléments du DOM
+            // Démarrer l'animation typewriter
+            setTimeout(typeWriter, 1000);
+            
+            // Créer les particules matrix
+            createMatrixParticles();
+            
+            // Initialiser les observateurs
+            document.querySelectorAll('.group, .skill-item, .bg-white, .bg-gray-50').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                scrollObserver.observe(el);
+            });
+            
+            // Observer pour les compteurs
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            const statsSection = document.querySelector('.grid.grid-cols-2.md\\:grid-cols-4');
+            if (statsSection) counterObserver.observe(statsSection);
+            
+            // Observer pour les compétences
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(animateSkillBars, 500);
+                        skillObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            const competencesSection = document.getElementById('competences');
+            if (competencesSection) skillObserver.observe(competencesSection);
+            
+            // Initialiser bouton scroll et thèmes
+            initScrollToTop();
+            initThemeSelector();
+            
+            // ========== MENU MOBILE (EXISTANT) ==========
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const menu = document.getElementById('menu');
             
-            // Vérification que les éléments existent
             if (mobileMenuButton && menu) {
-                // Ajout de l'événement de clic sur le bouton du menu mobile
                 mobileMenuButton.addEventListener('click', function() {
-                    // Basculer la visibilité du menu
                     menu.classList.toggle('hidden');
                 });
                 
-                // Fermer le menu quand on clique sur un lien (navigation)
                 const menuLinks = menu.querySelectorAll('a');
                 menuLinks.forEach(link => {
                     link.addEventListener('click', function() {
-                        // Fermer le menu sur mobile après avoir cliqué sur un lien
                         menu.classList.add('hidden');
                     });
                 });
                 
-                // Fermer le menu quand on clique à l'extérieur (pour mobile)
                 document.addEventListener('click', function(event) {
                     if (!mobileMenuButton.contains(event.target) && !menu.contains(event.target)) {
                         menu.classList.add('hidden');
@@ -1826,7 +2340,17 @@
                 });
             }
             
-            // Animation scroll fluide pour les liens d'ancrage
+            // ========== FORMULAIRE DE CONTACT (EXISTANT) ==========
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+                    contactForm.reset();
+                });
+            }
+            
+            // ========== ANIMATION SCROLL FLUIDE (EXISTANT) ==========
             const anchorLinks = document.querySelectorAll('a[href^="#"]');
             anchorLinks.forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1841,23 +2365,24 @@
                 });
             });
         });
-        
-        // Gestion du formulaire de contact
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Ici, vous pourriez ajouter la logique d'envoi du formulaire
-                // Par exemple, envoi via une API ou un service d'emailing
-                
-                alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-                
-                // Réinitialiser le formulaire
-                contactForm.reset();
-            });
-        }
     </script>
+
+    <!-- Bouton scroll to top cyberpunk -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-red-500 to-purple-600 text-white rounded-full shadow-2xl hover:shadow-red-500/50 transition-all duration-300 transform hover:scale-110 opacity-0 pointer-events-none z-50 border-2 border-red-400/30">
+        <i class="fas fa-rocket text-xl transform rotate-45"></i>
+    </button>
+
+    <!-- Sélecteur de thème cyberpunk -->
+    <div id="themeSelector" class="fixed bottom-8 left-8 z-50">
+        <div class="bg-gray-900/90 backdrop-blur-sm rounded-lg p-2 shadow-2xl border border-cyan-500/30">
+            <div class="flex gap-2">
+                <button class="theme-btn w-8 h-8 rounded-full bg-gradient-to-r from-red-500 to-purple-600" data-theme="default" title="Thème par défaut"></button>
+                <button class="theme-btn w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-cyan-500" data-theme="matrix" title="Thème Matrix"></button>
+                <button class="theme-btn w-8 h-8 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500" data-theme="cyber" title="Thème Cyber"></button>
+                <button class="theme-btn w-8 h-8 rounded-full bg-gradient-to-r from-pink-500 to-rose-500" data-theme="neon" title="Thème Néon"></button>
+            </div>
+        </div>
+    </div>
 
 <!-- Fermeture des balises HTML -->
 </body>
