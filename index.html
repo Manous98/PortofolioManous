@@ -47,26 +47,32 @@
             }
         }
     </script>
-    <!-- Effets cyberpunk avancés -->
+    <!-- ========== STYLES CYBERPUNK ========== -->
     <style>
+        /* Variables de thème */
         :root {
             --primary-color: #5D5CDE;
             --accent-color: #ff0040;
             --cyber-color: #8b00ff;
             --matrix-color: #00ffff;
         }
+
+        /* Animations */
         @keyframes progressFill {
             from { width: 0%; box-shadow: 0 0 10px currentColor; }
             to { width: var(--progress-width); box-shadow: 0 0 20px currentColor, inset 0 0 10px rgba(255,255,255,0.2); }
         }
+
         @keyframes glowPulse {
             0%, 100% { box-shadow: 0 0 5px currentColor; }
             50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
         }
+
         @keyframes shimmer {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
+
         @keyframes glitch {
             0%, 100% { transform: translate(0); }
             20% { transform: translate(-2px, 2px); }
@@ -74,23 +80,28 @@
             60% { transform: translate(2px, 2px); }
             80% { transform: translate(2px, -2px); }
         }
+
         @keyframes matrixRain {
             0% { transform: translateY(-100px); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
             100% { transform: translateY(100px); opacity: 0; }
         }
+
         @keyframes rocket {
             0% { transform: scale(1) rotate(45deg); }
             50% { transform: scale(1.2) rotate(45deg) translateY(-10px); }
             100% { transform: scale(1) rotate(45deg); }
         }
+
+        /* Classes d'effets */
         .skill-progress {
             animation: progressFill 2s ease-in-out forwards;
             animation-delay: 0.5s;
             position: relative;
             overflow: hidden;
         }
+
         .skill-progress::before {
             content: '';
             position: absolute;
@@ -101,8 +112,10 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             animation: shimmer 2s infinite;
         }
+
         .group:hover .skill-progress { animation: glowPulse 1s infinite alternate; }
         .glitch:hover { animation: glitch 0.3s infinite; }
+
         .matrix-rain::after {
             content: '010101';
             position: absolute;
@@ -114,7 +127,10 @@
             animation: matrixRain 2s infinite;
             opacity: 0;
         }
+
         .group:hover .matrix-rain::after { animation-play-state: running; }
+
+        /* Optimisations responsive */
         @media (max-width: 640px) {
             .text-4xl { font-size: 2rem !important; line-height: 1.2; }
             .text-6xl { font-size: 2.5rem !important; line-height: 1.1; }
@@ -131,171 +147,16 @@
             .theme-btn { width: 3rem !important; height: 3rem !important; }
             #scrollToTop { width: 3.5rem !important; height: 3.5rem !important; bottom: 1rem !important; right: 1rem !important; }
         }
+
         @media (hover: none) {
             .group:hover { transform: scale(1.02); }
             .hover\\:scale-110:hover { transform: scale(1.05); }
         }
+
+        /* Optimisations générales */
         * { scroll-behavior: smooth; }
         img { content-visibility: auto; }
         .group, .skill-item { will-change: transform, opacity; }
-    </style>
-
-    <!-- ========== CSS ANIMATIONS CYBERPUNK AVANCÉES ========== -->
-    <style>
-        :root {
-            --primary-color: #5D5CDE;
-            --accent-color: #ff0040;
-            --cyber-color: #8b00ff;
-            --matrix-color: #00ffff;
-        }
-
-        /* Animations de progression avec effets */
-        @keyframes progressFill {
-            from { 
-                width: 0%; 
-                box-shadow: 0 0 10px currentColor;
-            }
-            to { 
-                width: var(--progress-width); 
-                box-shadow: 0 0 20px currentColor, inset 0 0 10px rgba(255,255,255,0.2);
-            }
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 0 5px currentColor; }
-            50% { box-shadow: 0 0 15px currentColor, 0 0 25px currentColor; }
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        @keyframes glitch {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-        }
-
-        @keyframes matrixRain {
-            0% { transform: translateY(-100px); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100px); opacity: 0; }
-        }
-
-        @keyframes rocket {
-            0% { transform: scale(1) rotate(45deg); }
-            50% { transform: scale(1.2) rotate(45deg) translateY(-10px); }
-            100% { transform: scale(1) rotate(45deg); }
-        }
-
-        /* Classes pour les effets */
-        .skill-progress {
-            animation: progressFill 2s ease-in-out forwards;
-            animation-delay: 0.5s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-progress::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        .group:hover .skill-progress {
-            animation: glowPulse 1s infinite alternate;
-        }
-
-        .glitch:hover {
-            animation: glitch 0.3s infinite;
-        }
-
-        .matrix-rain::after {
-            content: '010101';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            color: #00ff41;
-            font-family: monospace;
-            font-size: 12px;
-            animation: matrixRain 2s infinite;
-            opacity: 0;
-        }
-
-        .group:hover .matrix-rain::after {
-            animation-play-state: running;
-        }
-
-        /* Optimisations responsive */
-        @media (max-width: 640px) {
-            .text-4xl { font-size: 2rem !important; line-height: 1.2; }
-            .text-6xl { font-size: 2.5rem !important; line-height: 1.1; }
-            .text-7xl { font-size: 3rem !important; line-height: 1.1; }
-            .py-20 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
-            .py-32 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
-            .px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
-            .lg\\:grid-cols-3 { grid-template-columns: 1fr !important; }
-            .lg\\:grid-cols-2 { grid-template-columns: 1fr !important; }
-            .md\\:grid-cols-2 { grid-template-columns: 1fr !important; }
-            
-            #menu {
-                backdrop-filter: blur(10px);
-                background: rgba(0,0,0,0.9) !important;
-            }
-            
-            #cyber-bg canvas {
-                opacity: 0.05 !important;
-            }
-            
-            .group {
-                margin-bottom: 1rem;
-                padding: 1rem !important;
-            }
-            
-            .theme-btn {
-                width: 3rem !important;
-                height: 3rem !important;
-            }
-            
-            #scrollToTop {
-                width: 3.5rem !important;
-                height: 3.5rem !important;
-                bottom: 1rem !important;
-                right: 1rem !important;
-            }
-        }
-
-        @media (hover: none) {
-            .group:hover {
-                transform: scale(1.02);
-            }
-            
-            .hover\\:scale-110:hover {
-                transform: scale(1.05);
-            }
-        }
-
-        * {
-            scroll-behavior: smooth;
-        }
-
-        img {
-            content-visibility: auto;
-            loading: lazy;
-        }
-
-        .group, .skill-item {
-            will-change: transform, opacity;
-        }
     </style>
 </head>
 <!-- DÉBUT DU CORPS DE LA PAGE -->
@@ -409,9 +270,9 @@
             <!-- Description professionnelle -->
             <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed">
                 � <strong>Développeur Full Stack</strong> passionné et <strong>étudiant en Cybersécurité</strong>. 
-                Actuellement en formation <strong>C|CT (EC-Council)</strong>, j'apprends le <strong>pentesting</strong>, 
+                Actuellement en formation <strong>C|CT (EC-Council)</strong> j'apprends le <strong>Fonctionnement des systèmes</strong>, 
                 l'<strong>analyse des vulnérabilités</strong> et l'<strong>administration sécurisée</strong>. En développement, 
-                je maîtrise <strong>Python</strong>, <strong>JavaScript</strong> et les environnements <strong>Linux</strong>.
+                 je suis a l'aise avec <strong>Python</strong>, <strong>Bash</strong> et les environnements <strong>Linux</strong>.
             </p>
             
             <!-- Statistiques impressionnantes -->
@@ -479,7 +340,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Mes Réalisations</h2>
                 <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                     Projets concrets en cybersécurité, audit réseau et développement sécurisé. 
-                    De l'automatisation d'audit pour Moov Africa aux CTF internationaux.
+                    De l'automatisation d'audit pour Moov Africa aux CTF internationaux(Le hackerverse CTF).
                 </p>
             </div>
             
@@ -500,12 +361,22 @@
                             </div>
                             <div class="ml-auto">
                                 <div class="bg-white/20 px-3 py-1 rounded-full text-sm font-semibold">
-                                    EN COURS
+                                    (Juin-Septembre 2025)
                                 </div>
                             </div>
                         </div>
                         <p class="text-lg font-medium">
                             "Automatisation de l'audit de configuration des équipements réseau et système avec alertes de conformité"
+                            <br>Voici en quoi consistait mon projet chez Moov Africa durant mon stage de 4 mois:<br>
+                            <ul class="list-disc pl-5"><br>
+                                <strong>
+                                    <li>Développement d'un outil Python pour auditer automatiquement les configurations réseau (routeurs, switches, pare-feu, serveurs)</li><br>
+                                    <li>Utilisation de Netmiko et TextFSM pour se connecter aux équipements et parser les configurations</li><br>
+                                    <li>Comparaison des configurations avec les benchmarks CIS pour identifier les non-conformités</li><br>
+                                    <li>Génération de rapports d'audit détaillés avec recommandations de remédiation</li><br>
+                                    <li>Mise en place d'alertes automatisées pour notifier l'équipe réseau en cas de non-conformité critique</li>
+                                </strong>
+                            </ul>
                         </p>
                     </div>
                     
@@ -584,7 +455,6 @@
                                 <i class="fas fa-tasks mr-2"></i>Défis en cours
                             </h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                                <div>• Parser multi-vendor (Cisco IOS, JunOS, MikroTik)</div>
                                 <div>• Secret management sécurisé</div>
                                 <div>• Scalabilité & orchestration</div>
                                 <div>• Intégration SIEM & alerting</div>
@@ -618,7 +488,7 @@
                             <h3 class="font-bold text-xl">CTF Hackerverse</h3>
                         </div>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Participation active aux compétitions CTF internationales. 
+                            Participation active aux compétitions Hackerverse CTF internationales Avec un classement mondial apres chaque competition chaques 10 derniers jours du mois.
                             Renforcement des compétences en pentesting, forensics, reverse engineering, cryptographie, 
                             threat intelligence, OSINT, ingénierie sociale, administration sécurisée et développement sécurisé.
                         </p>
@@ -661,12 +531,11 @@
                     <div class="p-6">
                         <div class="flex items-center gap-2 mb-3">
                             <i class="fas fa-server text-cyan-500"></i>
-                            <h3 class="font-bold text-xl">Lab GNS3 Avancé</h3>
+                            <h3 class="font-bold text-xl">Laboratoire GNS3 & Administration Linux</h3>
                         </div>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
                             Création d'environnements réseau complexes pour tests d'audit et simulation d'attaques. 
                             Topologies multi-vendor avec routeurs, switches et serveurs.
-                        </p>
                         <div class="space-y-2 mb-4">
                             <div class="flex items-center gap-2 text-sm">
                                 <i class="fas fa-check text-green-500"></i>
@@ -679,6 +548,18 @@
                             <div class="flex items-center gap-2 text-sm">
                                 <i class="fas fa-check text-green-500"></i>
                                 <span>Serveurs Linux & Windows</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Automatisation Crontab pour les tâches Linux</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Programmation de daemons pour surveillance mémoire</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <i class="fas fa-check text-green-500"></i>
+                                <span>Scripts Bash pour la gestion et la surveillance des systèmes</span>
                             </div>
                         </div>
                     </div>
@@ -800,7 +681,7 @@
                             <h3 class="font-bold text-xl">Compliance & Standards</h3>
                         </div>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Expertise approfondie en référentiels de sécurité internationaux, normes ISO, 
+                            Etude approfondie sur les référentiels de sécurité internationaux, normes ISO, Benchmarks CIS,
                             frameworks NIST et réglementations RGPD. Implémentation pratique et automatisation des contrôles.
                         </p>
                         
@@ -808,7 +689,7 @@
                         <div class="space-y-4 mb-6">
                             <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4 rounded-lg border border-indigo-200 dark:border-indigo-700">
                                 <h4 class="font-semibold text-indigo-700 dark:text-indigo-300 mb-2 flex items-center">
-                                    <i class="fas fa-scroll mr-2"></i>📜 Normes ISO & Standards de Sécurité
+                                    <i class="fas fa-scroll mr-2"></i>📚 Normes ISO & Standards Internationaux
                                 </h4>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
                                     <div class="space-y-1">
@@ -883,7 +764,7 @@
                 <div class="inline-flex flex-col md:flex-row items-center gap-6 p-8 bg-gradient-to-r from-red-500 to-purple-600 rounded-xl text-white shadow-xl">
                     <div class="text-center md:text-left">
                         <div class="text-2xl font-bold mb-2">🚀 Objectif Stage</div>
-                        <div class="text-red-100">Finaliser le prototype Moov Africa et l'industrialiser avec des experts</div>
+                        <div class="text-red-100">Finaliser le prototype Moov Africa Et l'heberger sur leurs serveurs pour leurs faciliter l'audit interne de leurs equipements</div>
                     </div>
                     <div class="flex gap-4">
                         <a href="#contact" class="px-6 py-3 bg-white text-purple-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold">
@@ -910,10 +791,9 @@
                 <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-red-600 rounded-full mb-6">
                     <i class="fas fa-tools text-2xl text-white"></i>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Arsenal Cybersécurité</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Arsenal Cybersécurité & IT Systems</h2>
                 <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                    Maîtrise complète des outils et technologies de pointe pour la sécurité informatique, 
-                    du pentesting à l'administration sécurisée des systèmes.
+                    Maîtrise complète des outils et technologies de pointe pour la sécurité informatique et la gestion des infrastructures IT, du pentesting à l'administration sécurisée des systèmes et réseaux.
                 </p>
             </div>
             
@@ -1173,7 +1053,7 @@
                                 <span class="font-medium flex items-center gap-2">
                                     <i class="fas fa-database text-yellow-500 text-sm"></i>
                                     MySQL
-                                </span>
+                                </span>                     
                                 <span class="text-sm font-semibold text-yellow-500">20%</span>
                             </div>
                             <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
@@ -1384,6 +1264,112 @@
                             </div>
                             <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
                                 <div class="bg-gradient-to-r from-violet-400 to-violet-600 h-full rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== CATÉGORIE 7 : INFRASTRUCTURE IT & GESTION ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-orange-500">
+                    <div class="text-orange-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6 text-orange-600 dark:text-orange-400">Infrastructure IT & Gestion de Projet</h3>
+                    <div class="space-y-4">
+                        
+                        <!-- Infrastructure Réseau -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-network-wired text-orange-500 text-sm"></i>
+                                    Infrastructure Réseau
+                                </span>
+                                <span class="text-sm font-semibold text-orange-500">70%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-orange-400 to-orange-600 h-full rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gestion Endpoints -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-desktop text-orange-500 text-sm"></i>
+                                    Gestion Endpoints
+                                </span>
+                                <span class="text-sm font-semibold text-orange-500">60%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-orange-400 to-orange-600 h-full rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gestion de Projet -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-tasks text-orange-500 text-sm"></i>
+                                    Gestion de Projet (Scrum/Agile)
+                                </span>
+                                <span class="text-sm font-semibold text-orange-500">50%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-orange-400 to-orange-600 h-full rounded-full" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== CATÉGORIE 7 : INFRASTRUCTURE IT & GESTION DE PROJET ===== -->
+                <div class="group bg-white dark:bg-dark-bg p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-l-4 border-indigo-500">
+                    <div class="text-indigo-500 text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">Infrastructure IT & Gestion de Projet</h3>
+                    <div class="space-y-4">
+
+                        <!-- Infrastructure Réseau -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-network-wired text-indigo-500 text-sm"></i>
+                                    Infrastructure Réseau(Connaissance de base)
+                                </span>
+                                <span class="text-sm font-semibold text-indigo-500">60%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-indigo-400 to-indigo-600 h-full rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Conformité & Politiques -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-shield-alt text-indigo-500 text-sm"></i>
+                                    Conformité SI
+                                </span>
+                                <span class="text-sm font-semibold text-indigo-500">60%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-indigo-400 to-indigo-600 h-full rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Gestion de Projet -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-medium flex items-center gap-2">
+                                    <i class="fas fa-tasks text-indigo-500 text-sm"></i>
+                                    Gestion de Projet informatique
+                                </span>
+                                <span class="text-sm font-semibold text-indigo-500">55%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-indigo-400 to-indigo-600 h-full rounded-full" style="width: 55%"></div>
                             </div>
                         </div>
                     </div>
@@ -1684,7 +1670,7 @@
                             <h3 class="text-xl font-bold bg-gradient-to-r from-red-500 to-cyan-500 bg-clip-text text-transparent">
                                 Ousmane TRAORE
                             </h3>
-                            <p class="text-purple-600 dark:text-purple-400 font-medium">Cybersecurity Specialist</p>
+                            <p class="text-purple-600 dark:text-purple-400 font-medium">IT Systems & Cybersecurity Specialist</p>
                             
                             <!-- Badge C|CT en formation -->
                             <div class="inline-flex items-center gap-2 mt-3 px-4 py-2 bg-gradient-to-r from-red-500/20 to-purple-500/20 border border-red-500/30 rounded-full">
@@ -1997,11 +1983,11 @@
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg text-green-600 dark:text-green-400 mb-2">WhatsApp</h4>
                                 <div class="space-y-1">
-                                    <a href="tel:+22677598859" class="block text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                                        +226 77 59 88 59
+                                    <a href="tel:+22676509466" class="block text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                        +226 76 50 94 66
                                     </a>
-                                    <a href="tel:+22605013010" class="block text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
-                                        +226 05 01 30 10
+                                    <a href="tel:+22677578859" class="block text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+                                        +226 77 57 88 59
                                     </a>
                                 </div>
                             </div>
@@ -2087,14 +2073,14 @@
             <div class="text-center">
                 <div class="inline-flex flex-col md:flex-row items-center gap-6 p-8 bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl text-white shadow-xl">
                     <div class="text-center md:text-left">
-                        <div class="text-2xl font-bold mb-2">🚀 Prêt pour votre projet ?</div>
+                        <div class="text-2xl font-bold mb-2"> Prêt pour votre projet ?</div>
                         <div class="text-gray-300">Sécurisez votre infrastructure avec un expert certifié C|CT</div>
                     </div>
                     <div class="flex gap-4">
                         <a href="mailto:ousmanet724@gmail.com" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors font-semibold">
                             Contactez-moi
                         </a>
-                        <a href="tel:+22677598859" class="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors font-semibold">
+                        <a href="tel:+22676509466" class="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg transition-colors font-semibold">
                             Appelez-moi
                         </a>
                     </div>
@@ -2175,7 +2161,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div class="text-center md:text-left">
                         <p class="text-gray-400 text-sm">
-                            © 2024 Ousmane Traoré - Portfolio Cybersécurité
+                            © 2025 Ousmane Traoré - Portfolio Cybersécurité
                         </p>
                     </div>
                     <div class="flex items-center gap-6 text-sm text-gray-400">
@@ -2206,506 +2192,8 @@
         </div>
     </footer>
 
-    <!-- ========== JAVASCRIPT CYBERPUNK AVANCÉ ========== -->
-    <script>
-        // ========== EFFET TYPEWRITER CYBERPUNK ==========
-        const texts = [
-            "Full Stack Developer",
-            "Security Student", 
-            "C|CT EC-Council Student",
-            "Python Developer",
-            "Web Developer",
-            "Cybersecurity Enthusiast"
-        ];
-
-        let textIndex = 0;
-        let charIndex = 0;
-        const typewriterElement = document.getElementById('typewriter');
-
-        function typeWriter() {
-            if (typewriterElement && charIndex < texts[textIndex].length) {
-                typewriterElement.textContent += texts[textIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 100);
-            } else if (typewriterElement) {
-                setTimeout(eraseText, 2000);
-            }
-        }
-
-        function eraseText() {
-            if (typewriterElement && charIndex > 0) {
-                typewriterElement.textContent = texts[textIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(eraseText, 50);
-            } else {
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(typeWriter, 500);
-            }
-        }
-
-        // ========== PARTICULES MATRIX CYBERPUNK ==========
-        function createMatrixParticles() {
-            const cyberBg = document.getElementById('cyber-bg');
-            if (!cyberBg) return;
-            
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            canvas.style.position = 'absolute';
-            canvas.style.top = '0';
-            canvas.style.left = '0';
-            canvas.style.zIndex = '1';
-            canvas.style.opacity = '0.1';
-            canvas.style.pointerEvents = 'none';
-            
-            cyberBg.appendChild(canvas);
-            
-            const particles = [];
-            
-            // Fonction pour obtenir les couleurs du thème actuel
-            function getThemeColors() {
-                const root = document.documentElement;
-                return [
-                    getComputedStyle(root).getPropertyValue('--accent-color').trim() || '#ff0040',
-                    getComputedStyle(root).getPropertyValue('--cyber-color').trim() || '#8b00ff',
-                    getComputedStyle(root).getPropertyValue('--matrix-color').trim() || '#00ffff',
-                    getComputedStyle(root).getPropertyValue('--primary-color').trim() || '#5D5CDE'
-                ];
-            }
-            
-            for (let i = 0; i < 50; i++) {
-                const colors = getThemeColors();
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
-                    size: Math.random() * 3 + 1,
-                    colorIndex: Math.floor(Math.random() * colors.length),
-                    life: Math.random() * 100 + 50
-                });
-            }
-            
-            function animateParticles() {
-                const colors = getThemeColors(); // Récupérer les couleurs à chaque frame
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                particles.forEach((particle, index) => {
-                    particle.x += particle.vx;
-                    particle.y += particle.vy;
-                    particle.life--;
-                    
-                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-                    
-                    ctx.fillStyle = colors[particle.colorIndex] || colors[0];
-                    ctx.globalAlpha = particle.life / 100;
-                    ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    ctx.fill();
-                    
-                    if (particle.life <= 0) {
-                        particle.x = Math.random() * canvas.width;
-                        particle.y = Math.random() * canvas.height;
-                        particle.life = Math.random() * 100 + 50;
-                        particle.colorIndex = Math.floor(Math.random() * colors.length);
-                    }
-                });
-                
-                ctx.globalAlpha = 0.1;
-                particles.forEach((p1, i) => {
-                    particles.slice(i + 1).forEach(p2 => {
-                        const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
-                        if (distance < 100) {
-                            ctx.strokeStyle = colors[2] || '#00ffff'; // matrixColor
-                            ctx.lineWidth = 1;
-                            ctx.beginPath();
-                            ctx.moveTo(p1.x, p1.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.stroke();
-                        }
-                    });
-                });
-                
-                requestAnimationFrame(animateParticles);
-            }
-            
-            animateParticles();
-            
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-        }
-
-        // ========== ANIMATIONS AU SCROLL ==========
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    entry.target.classList.add('animate-fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // ========== COMPTEURS ANIMÉS ==========
-        function animateCounters() {
-            const counters = document.querySelectorAll('.text-2xl.font-bold, .text-3xl.font-bold');
-            
-            counters.forEach(counter => {
-                const text = counter.textContent;
-                const number = parseInt(text.replace(/[^0-9]/g, ''));
-                
-                if (number > 0) {
-                    let current = 0;
-                    const increment = number / 60;
-                    
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= number) {
-                            counter.textContent = text;
-                            clearInterval(timer);
-                        } else {
-                            counter.textContent = text.replace(/[0-9]+/, Math.floor(current));
-                        }
-                    }, 50);
-                }
-            });
-        }
-
-        // ========== ANIMATION BARRES DE COMPÉTENCES ==========
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('[style*="width:"]');
-            
-            skillBars.forEach(bar => {
-                if (bar.style.width) {
-                    const width = bar.style.width;
-                    bar.style.setProperty('--progress-width', width);
-                    bar.style.width = '0%';
-                    bar.classList.add('skill-progress');
-                }
-            });
-        }
-
-        // ========== BOUTON SCROLL TO TOP ==========
-        function initScrollToTop() {
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-            if (!scrollToTopBtn) return;
-
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.style.opacity = '1';
-                    scrollToTopBtn.style.pointerEvents = 'auto';
-                    scrollToTopBtn.style.transform = 'scale(1) rotate(45deg)';
-                } else {
-                    scrollToTopBtn.style.opacity = '0';
-                    scrollToTopBtn.style.pointerEvents = 'none';
-                    scrollToTopBtn.style.transform = 'scale(0.8) rotate(45deg)';
-                }
-            });
-
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-                
-                scrollToTopBtn.style.animation = 'rocket 0.5s ease-out';
-                setTimeout(() => {
-                    scrollToTopBtn.style.animation = '';
-                }, 500);
-            });
-        }
-
-        // ========== SYSTÈME DE THÈMES CYBERPUNK ==========
-        const themes = {
-            default: {
-                '--primary-color': '#5D5CDE',
-                '--accent-color': '#ff0040',
-                '--cyber-color': '#8b00ff',
-                '--matrix-color': '#00ffff'
-            },
-            matrix: {
-                '--primary-color': '#00ff41',
-                '--accent-color': '#008f11',
-                '--cyber-color': '#004f08',
-                '--matrix-color': '#00ff41'
-            },
-            cyber: {
-                '--primary-color': '#ff6600',
-                '--accent-color': '#ffaa00',
-                '--cyber-color': '#ff3300',
-                '--matrix-color': '#ffff00'
-            },
-            neon: {
-                '--primary-color': '#ff1493',
-                '--accent-color': '#ff69b4',
-                '--cyber-color': '#ff00ff',
-                '--matrix-color': '#ffb6c1'
-            }
-        };
-
-function initThemeSelector() {
-    document.querySelectorAll('.theme-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const theme = btn.dataset.theme;
-            const root = document.documentElement;
-            
-            // Appliquer les variables CSS
-            Object.entries(themes[theme]).forEach(([property, value]) => {
-                root.style.setProperty(property, value);
-            });
-            
-            // Feedback visuel du bouton
-            document.body.style.transition = 'all 0.3s ease';
-            btn.style.transform = 'scale(1.2)';
-            setTimeout(() => {
-                btn.style.transform = 'scale(1)';
-            }, 200);
-            
-            // Sauvegarder le thème
-            localStorage.setItem('cyberpunk-theme', theme);
-            
-            console.log(`Thème ${theme} appliqué!`); // Debug
-        });
-    });
-
-    // Charger le thème sauvegardé au démarrage
-    const savedTheme = localStorage.getItem('cyberpunk-theme');
-    if (savedTheme && themes[savedTheme]) {
-        const root = document.documentElement;
-        Object.entries(themes[savedTheme]).forEach(([property, value]) => {
-            root.style.setProperty(property, value);
-        });
-        console.log(`Thème sauvegardé ${savedTheme} chargé!`); // Debug
-    }
-}        // ========== INITIALISATION GLOBALE ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            // Démarrer l'animation typewriter
-            setTimeout(typeWriter, 1000);
-            
-            // Créer les particules matrix
-            createMatrixParticles();
-            
-            // Initialiser les observateurs
-            document.querySelectorAll('.group, .skill-item, .bg-white, .bg-gray-50').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                scrollObserver.observe(el);
-            });
-            
-            // Observer pour les compteurs
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        counterObserver.unobserve(entry.target);
-                    }
-                });
-            });
-            
-            const statsSection = document.querySelector('.grid.grid-cols-2.md\\:grid-cols-4');
-            if (statsSection) counterObserver.observe(statsSection);
-            
-            // Observer pour les compétences
-            const skillObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        setTimeout(animateSkillBars, 500);
-                        skillObserver.unobserve(entry.target);
-                    }
-                });
-            });
-            
-            const competencesSection = document.getElementById('competences');
-            if (competencesSection) skillObserver.observe(competencesSection);
-            
-            // Initialiser bouton scroll et thèmes
-            initScrollToTop();
-            initThemeSelector();
-            
-            // ========== DÉTECTION AUTOMATIQUE MODE SOMBRE ==========
-            // Détection automatique de la préférence de mode sombre du système
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // Si le système préfère le mode sombre, ajouter la classe 'dark'
-                document.documentElement.classList.add('dark');
-            }
-            
-            // Écouter les changements de préférence du système
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-                if (event.matches) {
-                    // Mode sombre activé
-                    document.documentElement.classList.add('dark');
-                } else {
-                    // Mode clair activé
-                    document.documentElement.classList.remove('dark');
-                }
-            });
-            
-            // ========== BOUTON BASCULEMENT THÈME SOMBRE ==========
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                themeToggle.addEventListener('click', function() {
-                    document.documentElement.classList.toggle('dark');
-                    
-                    // Sauvegarder la préférence utilisateur
-                    if (document.documentElement.classList.contains('dark')) {
-                        localStorage.setItem('theme', 'dark');
-                    } else {
-                        localStorage.setItem('theme', 'light');
-                    }
-                });
-            }
-            
-            // Charger le thème sauvegardé au démarrage
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                if (savedTheme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                }
-            }
-            
-            // ========== MENU MOBILE (EXISTANT) ==========
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const menu = document.getElementById('menu');
-            
-            if (mobileMenuButton && menu) {
-                mobileMenuButton.addEventListener('click', function() {
-                    menu.classList.toggle('hidden');
-                });
-                
-                const menuLinks = menu.querySelectorAll('a');
-                menuLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        menu.classList.add('hidden');
-                    });
-                });
-                
-                document.addEventListener('click', function(event) {
-                    if (!mobileMenuButton.contains(event.target) && !menu.contains(event.target)) {
-                        menu.classList.add('hidden');
-                    }
-                });
-            }
-            
-            // ========== BOUTON CERTIFICATIONS INTERACTIF ==========
-            const certificationsBtn = document.getElementById('certifications-btn');
-            const certificationsDetails = document.getElementById('certifications-details');
-            const closeCertificationsBtn = document.getElementById('close-certifications');
-
-            if (certificationsBtn && certificationsDetails) {
-                certificationsBtn.addEventListener('click', function() {
-                    certificationsDetails.classList.remove('hidden');
-                    certificationsDetails.style.opacity = '0';
-                    setTimeout(() => {
-                        certificationsDetails.style.opacity = '1';
-                    }, 10);
-                    
-                    // Scroll vers la zone de détails
-                    certificationsDetails.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                });
-
-                closeCertificationsBtn.addEventListener('click', function() {
-                    certificationsDetails.style.opacity = '0';
-                    setTimeout(() => {
-                        certificationsDetails.classList.add('hidden');
-                    }, 300);
-                });
-            }
-            
-            // ========== BOUTONS COMPÉTENCES INTERACTIFS ==========
-            const skillDescriptions = {
-                linux: {
-                    title: "Administration Linux/Windows",
-                    description: "Maîtrise de l'administration système sur Linux (Ubuntu, CentOS) et Windows Server. Configuration de serveurs, gestion des utilisateurs, automatisation avec scripts Bash/PowerShell, monitoring système et résolution de problèmes."
-                },
-                fullstack: {
-                    title: "Développement Web Full-Stack", 
-                    description: "Développement complet d'applications web avec Python (Django, Flask), JavaScript (React, Node.js), HTML/CSS, bases de données relationnelles. Expérience en architecture MVC, API REST, et déploiement d'applications."
-                },
-                cloud: {
-                    title: "Administration Cloud/Microsoft365",
-                    description: "Gestion d'environnements cloud Microsoft 365, Azure Active Directory, configuration des services Office 365, gestion des licences et sécurité. Automatisation des tâches d'administration avec PowerShell."
-                },
-                database: {
-                    title: "Bases de données (PostgreSQL, MySQL)",
-                    description: "Conception, développement et administration de bases de données relationnelles. Optimisation des requêtes SQL, gestion des performances, sauvegarde/restauration, et intégration avec applications web."
-                },
-                ceh: {
-                    title: "CEH Formation complète",
-                    description: "Formation en Ethical Hacking couvrant les phases de reconnaissance, scanning, énumération, exploitation des vulnérabilités, post-exploitation. Utilisation d'outils comme Metasploit, Nmap, Wireshark dans un cadre légal."
-                },
-                testing: {
-                    title: "Test logiciel",
-                    description: "Tests fonctionnels et techniques d'applications, création de cas de test, tests de régression, détection et documentation des bugs. Méthodologies Agile et outils de test automatisé."
-                }
-            };
-
-            // Gestion des clics sur les boutons de compétences
-            document.querySelectorAll('.skill-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const skillKey = this.getAttribute('data-skill');
-                    const descriptionBox = document.getElementById('skill-description');
-                    const titleElement = descriptionBox.querySelector('h5');
-                    const textElement = descriptionBox.querySelector('p');
-                    
-                    // Mettre à jour le contenu
-                    titleElement.textContent = skillDescriptions[skillKey].title;
-                    textElement.textContent = skillDescriptions[skillKey].description;
-                    
-                    // Afficher la description avec animation
-                    descriptionBox.classList.remove('hidden');
-                    descriptionBox.style.opacity = '0';
-                    setTimeout(() => {
-                        descriptionBox.style.opacity = '1';
-                    }, 10);
-                    
-                    // Style du bouton actif
-                    document.querySelectorAll('.skill-btn').forEach(b => b.classList.remove('ring-2', 'ring-primary'));
-                    this.classList.add('ring-2', 'ring-primary');
-                });
-            });
-            
-            // ========== FORMULAIRE DE CONTACT (EXISTANT) ==========
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-                    contactForm.reset();
-                });
-            }
-            
-            // ========== ANIMATION SCROLL FLUIDE (EXISTANT) ==========
-            const anchorLinks = document.querySelectorAll('a[href^="#"]');
-            anchorLinks.forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+    <!-- ========== JAVASCRIPT PRINCIPAL ========== -->
+    <script src="js/main.js"></script>
 
     <!-- Bouton scroll to top cyberpunk -->
     <button id="scrollToTop" class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-red-500 to-purple-600 text-white rounded-full shadow-2xl hover:shadow-red-500/50 transition-all duration-300 transform hover:scale-110 opacity-0 pointer-events-none z-50 border-2 border-red-400/30">
