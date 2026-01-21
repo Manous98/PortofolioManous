@@ -95,7 +95,7 @@ Interface adaptative avec support du mode sombre automatique selon les préfére
 ---
 
 **📧 Contact :** ousmanet724@gmail.com  
-**📍 Localisation :** Mali  
+**📍 Localisation :** Burkina Faso
 **🎯 Objectif :** Stage/Alternance en Cybersécurité  
 
 *Portfolio créé en 2025 - Mise à jour continue*
