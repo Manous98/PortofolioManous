@@ -1,0 +1,18 @@
+# ============================================
+# .gitattributes - Statistiques linguistiques GitHub
+# ============================================
+
+# Fichiers de documentation (ne comptent pas dans les stats)
+*.md linguist-documentation=true
+*.pdf linguist-documentation=true
+
+# Images et assets
+*.png linguist-generated=true
+*.jpg linguist-generated=true
+*.jpeg linguist-generated=true
+*.gif linguist-generated=true
+*.svg linguist-generated=true
+
+# Si vous voulez que HTML soit le langage principal, gardez tel quel
+# Si vous voulez réduire HTML, décommentez la ligne suivante:
+# index.html linguist-vendored=true
